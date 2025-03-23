@@ -44,7 +44,7 @@ public class Config
 
     public static final ForgeConfigSpec.IntValue MAX_HEIGHT_BIOME_TEMP = BUILDER
             .comment("Defines the maximum height for the biome temperature to be applied")
-            .defineInRange("minHeightBiomeTemp", 155, -64, 320);
+            .defineInRange("maxHeightBiomeTemp", 155, -64, 320);
 
     public static final ForgeConfigSpec.DoubleValue BELOW_BIOME_TEMP = BUILDER
             .comment("The temperature below the min biome height")
@@ -52,7 +52,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue ABOVE_BIOME_TEMP = BUILDER
             .comment("The temperature above the min biome height")
-            .defineInRange("belowBiomeTemp", 11.0, 0, 60);
+            .defineInRange("aboveBiomeTemp", 11.0, 0, 60);
 
     public static final ForgeConfigSpec.DoubleValue IN_WATER_TEMPERATURE_MODIFIER = BUILDER
             .comment("Defines how being in water modifies the environment temperature")
@@ -86,7 +86,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue CAMPFIRE_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
-            .defineInRange("campfireBaseTemperatureModifier", 0.35, 0, 2.5);
+            .defineInRange("campfireBaseTemperatureFalloff", 0.35, 0, 2.5);
 
     // Fire
 
@@ -100,7 +100,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue FIRE_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
-            .defineInRange("fireBaseTemperatureModifier", 0.55, 0, 2.5);
+            .defineInRange("fireBaseTemperatureFalloff", 0.55, 0, 2.5);
 
     // Lava
 
@@ -114,7 +114,21 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue LAVA_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
-            .defineInRange("lavaBaseTemperatureModifier", 0.55, 0, 2.5);
+            .defineInRange("lavaBaseTemperaturFalloff", 0.55, 0, 2.5);
+
+    // Encased Fan
+
+    public static final ForgeConfigSpec.IntValue ENCASED_FAN_RANGE = BUILDER
+            .comment("Defines how the heat range")
+            .defineInRange("encasedFanRange", 8, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue FAN_SMOKING_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("fanSmokingTemperatureModifier", 55.0, 0, 60);
+
+    public static final ForgeConfigSpec.DoubleValue FAN_SMOKING_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("fanSmokingTemperatureFalloff", 0.55, 0, 2.5);
 
 
     static final ForgeConfigSpec SPEC = BUILDER.build();

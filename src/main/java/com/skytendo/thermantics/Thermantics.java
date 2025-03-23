@@ -2,6 +2,7 @@ package com.skytendo.thermantics;
 
 import com.mojang.logging.LogUtils;
 import com.skytendo.thermantics.networking.CT_Messages;
+import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -57,6 +58,7 @@ public class Thermantics
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         CT_Messages.register();
+        TemperatureModifierRegistry.registerModifiers();
     }
 
 

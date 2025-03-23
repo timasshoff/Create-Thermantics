@@ -1,5 +1,7 @@
 package com.skytendo.thermantics.datagen;
 
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllTags;
 import com.skytendo.thermantics.util.CT_BlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -27,12 +29,19 @@ public class CT_BlockTagProvider extends BlockTagsProvider {
                 .addTag(Tags.Blocks.FENCE_GATES)
                 .addTag(BlockTags.WALLS)
                 .addTag(Tags.Blocks.CHESTS)
-                .addTag(BlockTags.BEDS);
+                .addTag(BlockTags.BEDS)
+                .addTag(AllTags.AllBlockTags.WINDMILL_SAILS.tag)
+                .addTag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+                .add(AllBlocks.COPYCAT_PANEL.get())
+                .add(AllBlocks.COPYCAT_BARS.get())
+                .add(AllBlocks.COPYCAT_STEP.get())
+                .add(AllBlocks.COPYCAT_BASE.get());
 
         tag(CT_BlockTags.HIGH_ISOLATING)
                 .addTag(Tags.Blocks.END_STONES)
                 .addTag(BlockTags.WOOL)
-                .addTag(BlockTags.BEACON_BASE_BLOCKS);
+                .addTag(BlockTags.BEACON_BASE_BLOCKS)
+                .addTag(AllTags.AllBlockTags.CASING.tag);
 
         tag(CT_BlockTags.EXTREME_ISOLATING)
                 .addTag(Tags.Blocks.OBSIDIAN);

@@ -48,7 +48,7 @@ public class PlayerTemperatureManager {
     private static float calculateEnvironmentTemperature(Biome biome, Player player) {
         float temperature = 0.0f;
         for (TemperatureModifier modifier : TemperatureModifierRegistry.modifiers) {
-            temperature = modifier.modifyTemperature(player, biome, temperature);
+             temperature = modifier.modifyTemperature(player, biome, temperature);
         }
         return Math.min(Math.max(temperature, 0.0f), 60.0f);
     }

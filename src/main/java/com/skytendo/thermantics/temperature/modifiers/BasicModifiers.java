@@ -13,6 +13,9 @@ public class BasicModifiers {
     public static class HeightBiomeModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
+            System.out.println(Config.MIN_HEIGHT_BIOME_TEMP.get());
+            System.out.println(player.getY());
+            System.out.println(Config.MAX_HEIGHT_BIOME_TEMP.get());
             if (Config.MIN_HEIGHT_BIOME_TEMP.get() < player.getY() && player.getY() < Config.MAX_HEIGHT_BIOME_TEMP.get()) {
                 temperature = PlayerTemperatureManager.getBiomeTemperature(biome);
             } else if (player.getY() < Config.MIN_HEIGHT_BIOME_TEMP.get()) {
