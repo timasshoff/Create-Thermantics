@@ -1,74 +1,133 @@
 {
   "minecraft:recipes/decorations/crafting_table": {
     "criteria": {
-      "unlock_right_away": "2025-03-21 15:01:31 +0100"
+      "unlock_right_away": "2025-03-23 11:26:26 +0100"
     },
     "done": true
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:eroded_badlands": "2025-03-21 15:11:41 +0100",
-      "minecraft:frozen_river": "2025-03-21 15:34:33 +0100",
-      "minecraft:river": "2025-03-21 15:08:35 +0100",
-      "minecraft:ice_spikes": "2025-03-21 15:28:36 +0100",
-      "minecraft:frozen_ocean": "2025-03-21 15:44:42 +0100",
-      "minecraft:snowy_beach": "2025-03-21 15:28:40 +0100",
-      "minecraft:savanna": "2025-03-21 15:01:32 +0100",
-      "minecraft:plains": "2025-03-21 15:01:38 +0100"
+      "minecraft:birch_forest": "2025-03-23 12:51:58 +0100",
+      "minecraft:river": "2025-03-23 11:35:30 +0100",
+      "minecraft:forest": "2025-03-23 11:26:27 +0100",
+      "minecraft:flower_forest": "2025-03-23 12:54:09 +0100",
+      "minecraft:old_growth_birch_forest": "2025-03-23 11:35:56 +0100",
+      "minecraft:meadow": "2025-03-23 11:34:56 +0100",
+      "minecraft:plains": "2025-03-23 11:26:33 +0100"
     },
     "done": false
   },
+  "create:root": {
+    "criteria": {
+      "0": "2025-03-23 11:28:49 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/lava_bucket": {
+    "criteria": {
+      "lava_bucket": "2025-03-23 11:28:49 +0100"
+    },
+    "done": true
+  },
   "minecraft:recipes/transportation/cherry_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/bamboo_raft": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/spruce_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/birch_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/oak_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/mangrove_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/acacia_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/jungle_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
     },
     "done": true
   },
   "minecraft:recipes/transportation/dark_oak_boat": {
     "criteria": {
-      "in_water": "2025-03-21 15:22:09 +0100"
+      "in_water": "2025-03-23 11:35:36 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/oak_hanging_sign": {
+    "criteria": {
+      "has_stripped_logs": "2025-03-23 13:16:07 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2025-03-23 13:16:07 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_planks": {
+    "criteria": {
+      "has_logs": "2025-03-23 13:16:07 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/stripped_oak_wood": {
+    "criteria": {
+      "has_log": "2025-03-23 13:16:07 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cake": {
+    "criteria": {
+      "has_egg": "2025-03-23 14:44:19 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/flint_and_steel": {
+    "criteria": {
+      "has_obsidian": "2025-03-23 14:42:35 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2025-03-23 14:42:35 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2025-03-23 14:42:35 +0100"
     },
     "done": true
   },

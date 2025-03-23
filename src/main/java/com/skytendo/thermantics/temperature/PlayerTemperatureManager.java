@@ -1,104 +1,101 @@
 package com.skytendo.thermantics.temperature;
 
+import com.skytendo.thermantics.networking.CT_Messages;
+import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
+import com.skytendo.thermantics.util.BlockFinder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.TickEvent;
 
+import java.util.List;
+
 public class PlayerTemperatureManager {
+
+    public static float getUpdateChance(Player player) {
+        if (player.isFreezing()) {
+            return 0.08f;
+        }
+        if (player.isOnFire()) {
+            return 0.08f;
+        }
+        if (player.isInLava()) {
+            return 0.15f;
+        }
+        return 0.005f; // Default: Update every 10 seconds on average
+    }
 
     public static void updateTemperature(PlayerTemperature temperature, TickEvent.PlayerTickEvent event) {
         Holder<Biome> biome =  event.player.level().getBiome(event.player.blockPosition());
         float environmentTemperature = calculateEnvironmentTemperature(biome.get(), event.player);
         adjustTemperature(temperature, environmentTemperature);
+        event.player.sendSystemMessage(Component.literal("---------"));
         event.player.sendSystemMessage(Component.literal("Temperature: " + temperature.getTemperature()));
+        event.player.sendSystemMessage(Component.literal("Base Biome Temperature: " + getBiomeTemperature(biome.get())));
         event.player.sendSystemMessage(Component.literal("Environment Temperature: " + environmentTemperature));
+
+        CT_Messages.sendToPlayer(new TemperatureDataSyncS2CPacket(temperature.getTemperature()), (ServerPlayer) event.player);
     }
 
     private static float calculateEnvironmentTemperature(Biome biome, Player player) {
-        float temperature;
+        float temperature = 0.0f;
+
+        if (45 < player.getY() && player.getY() < 155) {
+            temperature = getBiomeTemperature(biome);
+        } else if (player.getY() < 45) {
+            temperature = 25.0f;
+        } else if (player.getY() > 155) {
+            temperature = 11.0f;
+        }
 
         if (player.isInWater()) {
-            temperature = getWaterTemperature(getBiomeTemperature(biome));
-            return temperature;
+            temperature -= 9.0f;
         }
 
-        temperature = getBiomeTemperature(biome);
+        if (player.isFreezing()) {
+            temperature -= 18.0f;
+        }
+
+        if (player.isInLava()) {
+            temperature += 55.0f;
+        }
+
+        if (player.isOnFire()) {
+            temperature += 30.0f;
+        }
+
         if (player.level().isNight()) {
-            temperature += getNightAdjustment(temperature);
+            temperature -= 8.0f;
         }
-        return temperature;
-    }
 
-    private static float getWaterTemperature(float biomeTemperature) {
-        if (biomeTemperature < 0) {
-            return 3.0f;
-        }
-        if (biomeTemperature < 8) {
-            return 13.0f;
-        }
-        if (biomeTemperature < 16) {
-            return 18.0f;
-        }
-        if (biomeTemperature > 28) {
-            return 21.0f;
-        }
-        return 12.0f;
+        temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.CAMPFIRE, 5, 22.0f, 0.35f);
+        temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.FIRE, 6, 35.0f, 0.55f);
+        temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.LAVA, 8, 55.0f, 0.55f);
+
+        return Math.min(Math.max(temperature, 0.0f), 60.0f);
     }
 
     private static float getBiomeTemperature(Biome biome) {
-        return (13.6484805403f * biome.getBaseTemperature()) + 7.0879687222f;
+        return Math.min(Math.max((18.52f * biome.getBaseTemperature() + 12.96f), 0.0f), 50.0f);
     }
 
-    private static float getNightAdjustment(float dayTemperature) {
-        if (dayTemperature < 12) {
-            return -6.0f;
-        }
-        if (dayTemperature < 16) {
-            return -8.0f;
-        }
-        if (dayTemperature < 20) {
-            return -9.0f;
-        }
-        if (dayTemperature < 24) {
-            return -14.0f;
-        }
-        if (dayTemperature < 30) {
-            return -21.0f;
-        }
-        if (dayTemperature > 30) {
-            return -28.0f;
-        }
-        return 0.0f;
-    }
-
-    private static void adjustTemperature(PlayerTemperature playerTemperature, float outsideTemperature) {
-        float freezingFactor = 0.06f;
-        float coolingFactor = 0.05f;
-        float temperateFactor = 0.03f;
-        float heatingFactor = 0.05f;
-
-        float target = 19 < outsideTemperature && outsideTemperature < 25 ? PlayerTemperature.DEFAULT_TEMPERATURE : outsideTemperature;
-        if (Math.abs((PlayerTemperature.DEFAULT_TEMPERATURE - target)) < 0.5f) {
-            playerTemperature.setTemperature(target);
+    private static void adjustTemperature(PlayerTemperature playerTemperature, float environmentTemperature) {
+        float difference = Math.abs(environmentTemperature - playerTemperature.getTemperature());
+        if (difference <= 1.0f) {
+            playerTemperature.setTemperature(environmentTemperature);
             return;
         }
 
-        float difference = Math.abs(playerTemperature.getTemperature() - target);
-
-        if (outsideTemperature < 0) {
-            playerTemperature.decreaseTemperature((float) (Math.exp(difference * 0.05f) * freezingFactor));
-            return;
+        float speed = 0.6f;
+        float amount = (float) (difference * (1 - Math.exp(-speed)));
+        if (environmentTemperature < playerTemperature.getTemperature()) {
+            playerTemperature.decreaseTemperature(amount);
+        } else if (environmentTemperature > playerTemperature.getTemperature()) {
+            playerTemperature.increaseTemperature(amount);
         }
-        if (outsideTemperature < 12) {
-            playerTemperature.decreaseTemperature((float) (Math.exp(difference * 0.05f) * coolingFactor));
-            return;
-        }
-        if (outsideTemperature > 28) {
-            playerTemperature.decreaseTemperature((float) (Math.exp(difference * 0.05f) * heatingFactor));
-            return;
-        }
-        playerTemperature.increaseTemperature((float) (Math.exp(difference * 0.05f) * temperateFactor));
     }
 }

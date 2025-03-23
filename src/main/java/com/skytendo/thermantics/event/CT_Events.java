@@ -1,16 +1,20 @@
 package com.skytendo.thermantics.event;
 
 import com.skytendo.thermantics.Thermantics;
+import com.skytendo.thermantics.networking.CT_Messages;
+import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
 import com.skytendo.thermantics.temperature.PlayerTemperature;
 import com.skytendo.thermantics.temperature.PlayerTemperatureManager;
 import com.skytendo.thermantics.temperature.PlayerTemperatureProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
@@ -48,10 +52,21 @@ public class CT_Events {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if(event.side == LogicalSide.SERVER) {
             event.player.getCapability(PlayerTemperatureProvider.PLAYER_TEMPERATURE).ifPresent(temperature -> {
-                if(event.player.getRandom().nextFloat() < 0.005f) { // Once Every 10 Seconds on Avg
+                if(event.player.getRandom().nextFloat() < PlayerTemperatureManager.getUpdateChance(event.player)) {
                     PlayerTemperatureManager.updateTemperature(temperature, event);
                 }
             });
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerJoinWorld(EntityJoinLevelEvent event) {
+        if (!event.getLevel().isClientSide()) {
+            if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+                event.getEntity().getCapability(PlayerTemperatureProvider.PLAYER_TEMPERATURE).ifPresent(temperature -> {
+                    CT_Messages.sendToPlayer(new TemperatureDataSyncS2CPacket(temperature.getTemperature()), serverPlayer);
+                });
+            }
         }
     }
 }

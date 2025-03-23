@@ -3,8 +3,18 @@ package com.skytendo.thermantics.temperature;
 import net.minecraft.nbt.CompoundTag;
 
 public class PlayerTemperature {
-    private float temperature = 36.5f;
-    public static float DEFAULT_TEMPERATURE = 36.5f;
+
+    public static float DEFAULT_TEMPERATURE = 35.0f;
+    public enum TemperatureState {
+        FREEZING,
+        COLD,
+        CHILLY,
+        WARM,
+        HOT,
+        FIERY
+    }
+
+    private float temperature = DEFAULT_TEMPERATURE;
 
     public float getTemperature() {
         return temperature;

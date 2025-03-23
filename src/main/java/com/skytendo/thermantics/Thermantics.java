@@ -1,6 +1,7 @@
 package com.skytendo.thermantics;
 
 import com.mojang.logging.LogUtils;
+import com.skytendo.thermantics.networking.CT_Messages;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -95,6 +96,8 @@ public class Thermantics
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+
+        CT_Messages.register();
     }
 
     // Add the example block item to the building blocks tab
