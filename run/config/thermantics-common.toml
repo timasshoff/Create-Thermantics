@@ -1,10 +1,19 @@
-#Whether to log the dirt block on common setup
-logDirtBlock = true
-#A magic number
-#Range: > 0
-magicNumber = 42
-#What you want the introduction message to be for the magic number
-magicNumberIntroduction = "The magic number is... "
-#A list of items to log on common setup.
-items = ["minecraft:iron_ingot"]
+#The chance of updating the player's temperature when they are freezing
+#Range: 0.0 ~ 1.0
+updateChanceFreezing = 0.07999999821186066
+#The chance of updating the player's temperature when they are on fire
+#Range: 0.0 ~ 1.0
+updateChanceFire = 0.07999999821186066
+#The chance of updating the player's temperature when they are in lava
+#Range: 0.0 ~ 1.0
+updateChanceLava = 0.15000000596046448
+#The chance of updating the player's temperature when they are in a normal environment
+#Range: 0.0 ~ 1.0
+updateChanceDefault = 0.004999999888241291
+#Defines how close to the environment temperature the player temp has to be to snap to the target temperature
+#Range: 0.0 ~ 60.0
+tempDifferenceSnap = 1.0
+#Defines how quickly the player temperature adjusts to the environment temperature
+#Range: 0.0 ~ 2.5
+tempAdjustmentSpeed = 0.6000000238418579
 

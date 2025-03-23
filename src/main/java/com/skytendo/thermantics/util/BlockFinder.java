@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockFinder {
-    public static float checkAndCalculateTemperatureModifier(Level world, BlockPos player, Block block, int range, float blockBaseTemperatureModifier, float rangeFalloff) {
+    public static float checkAndCalculateTemperatureModifier(Level world, BlockPos player, Block block, int range, double blockBaseTemperatureModifier, double rangeFalloff) {
         if (world == null || player == null || block == null) {
             return 0.0f;
         }
@@ -39,7 +39,7 @@ public class BlockFinder {
         return foundBlocks;
     }
 
-    public static float getIsolatedRangedTemperatureModifier(Level world, BlockPos player, BlockPos block, float baseTemperature, float rangeFalloff) {
+    public static float getIsolatedRangedTemperatureModifier(Level world, BlockPos player, BlockPos block, double baseTemperature, double rangeFalloff) {
         float distance = (float) Math.sqrt(player.distSqr(block));
         float rangedTemperature = (float) (baseTemperature * Math.exp(-rangeFalloff * distance));
 
