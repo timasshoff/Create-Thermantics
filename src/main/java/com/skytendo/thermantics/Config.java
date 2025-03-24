@@ -74,6 +74,22 @@ public class Config
             .comment("Defines how the night modifies the environment temperature")
             .defineInRange("nightTemperatureModifier", -8.0, -60, 60);
 
+    public static final ForgeConfigSpec.DoubleValue LOW_ISOLATION = BUILDER
+            .comment("Defines how much heat gets absorbed by low isolating blocks")
+            .defineInRange("lowIsolation", 0.5, 0, 10);
+
+    public static final ForgeConfigSpec.DoubleValue DEFAULT_ISOLATION = BUILDER
+            .comment("Defines how much heat gets absorbed by default blocks")
+            .defineInRange("defaultIsolation", 1.25, 0, 10);
+
+    public static final ForgeConfigSpec.DoubleValue HIGH_ISOLATION = BUILDER
+            .comment("Defines how much heat gets absorbed by highly isolating blocks")
+            .defineInRange("highIsolation", 2.5, 0, 10);
+
+    public static final ForgeConfigSpec.DoubleValue EXTREME_ISOLATION = BUILDER
+            .comment("Defines how much heat gets absorbed by extremely isolating blocks")
+            .defineInRange("extremeIsolation", 4.5, 0, 10);
+
     // Campfire
 
     public static final ForgeConfigSpec.IntValue CAMPFIRE_RANGE = BUILDER
@@ -115,6 +131,34 @@ public class Config
     public static final ForgeConfigSpec.DoubleValue LAVA_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
             .defineInRange("lavaBaseTemperaturFalloff", 0.55, 0, 2.5);
+
+    // Torch
+
+    public static final ForgeConfigSpec.IntValue TORCH_RANGE = BUILDER
+            .comment("Defines how the heat range")
+            .defineInRange("torchRange", 2, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue TORCH_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("torchBaseTemperatureModifier", 12.0, 0, 60);
+
+    public static final ForgeConfigSpec.DoubleValue TORCH_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("torchBaseTemperaturFalloff", 0.42, 0, 2.5);
+
+    // Redstone Torch
+
+    public static final ForgeConfigSpec.IntValue REDSTONE_TORCH_RANGE = BUILDER
+            .comment("Defines how the heat range")
+            .defineInRange("redstoneTorchRange", 2, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue REDSTONE_TORCH_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("redstoneTorchBaseTemperatureModifier", 8.0, 0, 60);
+
+    public static final ForgeConfigSpec.DoubleValue REDSTONE_TORCH_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("redstoneTorchBaseTemperaturFalloff", 0.55, 0, 2.5);
 
     // Encased Fan
 

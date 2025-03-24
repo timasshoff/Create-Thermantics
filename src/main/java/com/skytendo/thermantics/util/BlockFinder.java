@@ -1,5 +1,6 @@
 package com.skytendo.thermantics.util;
 
+import com.skytendo.thermantics.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -49,13 +50,13 @@ public class BlockFinder {
             for (BlockPos pos : blocks) {
                 BlockState state = world.getBlockState(pos);
                 if (state.is(CT_BlockTags.LOW_ISOLATING)) {
-                    isolation += 0.5f;
+                    isolation += Config.LOW_ISOLATION.get();
                 } else if (state.is(CT_BlockTags.HIGH_ISOLATING)) {
-                    isolation += 3.0f;
+                    isolation += Config.HIGH_ISOLATION.get();
                 } else if (state.is(CT_BlockTags.EXTREME_ISOLATING)) {
-                    isolation += 5.5f;
+                    isolation += Config.EXTREME_ISOLATION.get();
                 } else {
-                    isolation += 1.5f;
+                    isolation += Config.DEFAULT_ISOLATION.get();
                 }
             }
             if (baseTemperature < 0) {
