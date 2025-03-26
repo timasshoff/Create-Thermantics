@@ -77,6 +77,16 @@ public class BasicModifiers {
         }
     }
 
+    public static class RainModifier implements TemperatureModifier {
+        @Override
+        public float modifyTemperature(Player player, Biome biome, float temperature) {
+            if (player.level().isRaining()) {
+                temperature += Config.RAIN_MODIFIER.get();
+            }
+            return temperature;
+        }
+    }
+
     public static class VanillaBlocksModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {

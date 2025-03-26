@@ -3,6 +3,7 @@ package com.skytendo.thermantics.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.skytendo.thermantics.Thermantics;
 import com.skytendo.thermantics.temperature.PlayerTemperature;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
@@ -21,10 +22,14 @@ public class TemperatureHudOverlay {
         int x = width / 2;
         int y = height;
 
+        if (Minecraft.getInstance().player.isCreative()) {
+            return;
+        }
+
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        PlayerTemperature.TemperatureState temperatureState = ClientTemperatureData.getTemperatureState();
+        PlayerTemperature.TemperatureState temperatureState = PlayerTemperature.temperatureToState(ClientTemperatureData.get());
         ResourceLocation texture = THERMOMETER_EMPTY;
         switch (temperatureState) {
             case FREEZING:

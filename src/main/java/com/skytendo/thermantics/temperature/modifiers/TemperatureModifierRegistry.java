@@ -19,7 +19,9 @@ public class TemperatureModifierRegistry {
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.LavaModifier());
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.FireModifier());
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.NightModifier());
+        TemperatureModifierRegistry.registerModifier(new BasicModifiers.RainModifier());
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.VanillaBlocksModifier());
         TemperatureModifierRegistry.registerModifier(new EncasedFanTemperatureModifier());
+        TemperatureModifierRegistry.registerModifier(new ThermalExchangerTemperatureModifier());
     }
 }

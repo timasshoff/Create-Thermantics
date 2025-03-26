@@ -74,6 +74,10 @@ public class Config
             .comment("Defines how the night modifies the environment temperature")
             .defineInRange("nightTemperatureModifier", -8.0, -60, 60);
 
+    public static final ForgeConfigSpec.DoubleValue RAIN_MODIFIER = BUILDER
+            .comment("Defines how rain modifies the environment temperature")
+            .defineInRange("rainTemperatureModifier", -6.0, -60, 60);
+
     public static final ForgeConfigSpec.DoubleValue LOW_ISOLATION = BUILDER
             .comment("Defines how much heat gets absorbed by low isolating blocks")
             .defineInRange("lowIsolation", 0.5, 0, 10);
@@ -89,6 +93,16 @@ public class Config
     public static final ForgeConfigSpec.DoubleValue EXTREME_ISOLATION = BUILDER
             .comment("Defines how much heat gets absorbed by extremely isolating blocks")
             .defineInRange("extremeIsolation", 4.5, 0, 10);
+
+    // Thermal Exchanger
+
+    public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_CONSUMPTION = BUILDER
+            .comment("Defines how the maximal amount fuel the thermal exchanger consumes")
+            .defineInRange("thermalExchangerConsumption", 100, 1, 1000);
+
+    public static final ForgeConfigSpec.DoubleValue THERMAL_EXCHANGER_TICKS_PER_MB = BUILDER
+            .comment("Defines the ratio between consumed fuel and ticks")
+            .defineInRange("thermalExchangerRatio", 2.0, 0.1, 10.0);
 
     // Campfire
 
@@ -162,17 +176,29 @@ public class Config
 
     // Encased Fan
 
-    public static final ForgeConfigSpec.IntValue ENCASED_FAN_RANGE = BUILDER
-            .comment("Defines how the heat range")
-            .defineInRange("encasedFanRange", 8, 0, 50);
-
     public static final ForgeConfigSpec.DoubleValue FAN_SMOKING_BASE_TEMPERATURE_MODIFIER = BUILDER
             .comment("Defines the temperature modifier when as close as possible")
-            .defineInRange("fanSmokingTemperatureModifier", 55.0, 0, 60);
+            .defineInRange("fanSmokingTemperatureModifier", 3.5, -60, 60);
 
     public static final ForgeConfigSpec.DoubleValue FAN_SMOKING_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
-            .defineInRange("fanSmokingTemperatureFalloff", 0.55, 0, 2.5);
+            .defineInRange("fanSmokingTemperatureFalloff", 0.2, 0, 2.5);
+
+    public static final ForgeConfigSpec.DoubleValue FAN_BLASTING_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("fanBlastingTemperatureModifier", 5.5, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue FAN_BLASTING_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("fanBlastingTemperatureFalloff", 0.2, 0, 2.5);
+
+    public static final ForgeConfigSpec.DoubleValue FAN_SPLASHING_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("fanSplashingTemperatureModifier", -3.5, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue FAN_SPLASHING_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("fanSplashingTemperatureFalloff", 0.2, 0, 2.5);
 
 
     static final ForgeConfigSpec SPEC = BUILDER.build();

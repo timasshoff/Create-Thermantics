@@ -3,6 +3,9 @@ package com.skytendo.thermantics.temperature;
 import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
+import com.skytendo.thermantics.temperature.effects.PlayerFreezeEffect;
+import com.skytendo.thermantics.temperature.effects.RandomDamageEffect;
+import com.skytendo.thermantics.temperature.effects.TemperatureEffect;
 import com.skytendo.thermantics.temperature.modifiers.BasicModifiers;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifier;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
@@ -43,6 +46,23 @@ public class PlayerTemperatureManager {
         event.player.sendSystemMessage(Component.literal("Environment Temperature: " + environmentTemperature));
 
         CT_Messages.sendToPlayer(new TemperatureDataSyncS2CPacket(temperature.getTemperature()), (ServerPlayer) event.player);
+    }
+
+    public static void updateTemperatureState(PlayerTemperature temperature, TickEvent.PlayerTickEvent event) {
+        if (temperature.getCurrentTempState() == PlayerTemperature.temperatureToState(temperature.getTemperature())) {
+            temperature.increaseTicksInCurrentTempState();
+        } else {
+            temperature.setCurrentTempState(PlayerTemperature.temperatureToState(temperature.getTemperature()));
+            temperature.resetTicksInCurrentTempState();
+        }
+    }
+
+    public static void applyTemperatureEffects(PlayerTemperature temperature, TickEvent.PlayerTickEvent event) {
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FREEZING) {
+            if (temperature.getTicksInCurrentTempState() > 600) {
+                // Add effects here
+            }
+        }
     }
 
     private static float calculateEnvironmentTemperature(Biome biome, Player player) {

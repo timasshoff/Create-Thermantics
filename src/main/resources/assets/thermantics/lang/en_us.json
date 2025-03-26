@@ -1,0 +1,12 @@
+{
+  "thermantics.googles.thermal_exchanger.title": "Thermal Exchanger",
+  "thermantics.googles.thermal_exchanger.input": "Input Tank:",
+  "thermantics.googles.thermal_exchanger.output": "Output Tank:",
+  "thermantics.googles.thermal_exchanger.mode": "Current mode:",
+
+  "fluid_type.thermantics.cold_scorching_compound": "Cold Scorching Compound",
+  "fluid_type.thermantics.scorching_compound": "Scorching Compound",
+  "fluid_type.thermantics.superheated_scorching_compound": "Superheated Scorching Compound",
+  "fluid_type.thermantics.frigid_compound": "Frigid Compound",
+  "fluid_type.thermantics.warm_frigid_compound": "Warm Frigid Compound"
+}

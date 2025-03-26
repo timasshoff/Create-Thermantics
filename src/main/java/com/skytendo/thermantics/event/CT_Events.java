@@ -55,6 +55,8 @@ public class CT_Events {
                 if(event.player.getRandom().nextFloat() < PlayerTemperatureManager.getUpdateChance(event.player)) {
                     PlayerTemperatureManager.updateTemperature(temperature, event);
                 }
+                PlayerTemperatureManager.updateTemperatureState(temperature, event);
+                PlayerTemperatureManager.applyTemperatureEffects(temperature, event);
             });
         }
     }

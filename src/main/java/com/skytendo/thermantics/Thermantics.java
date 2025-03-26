@@ -1,9 +1,21 @@
 package com.skytendo.thermantics;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.AllCreativeModeTabs;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.skytendo.thermantics.block.CT_BlockEntities;
+import com.skytendo.thermantics.block.CT_Blocks;
+import com.skytendo.thermantics.fluid.CT_FluidTypes;
+import com.skytendo.thermantics.fluid.CT_Fluids;
+import com.skytendo.thermantics.item.CT_CreativeTabs;
+import com.skytendo.thermantics.item.CT_Items;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
+import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -39,6 +51,8 @@ public class Thermantics
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final NonNullSupplier<Registrate> REGISTRATE = NonNullSupplier.lazy(() -> Registrate.create(MODID));
+
     public Thermantics(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
@@ -49,6 +63,13 @@ public class Thermantics
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        CT_CreativeTabs.register(modEventBus);
+        CT_Items.register(modEventBus);
+        CT_Blocks.register(modEventBus);
+        CT_BlockEntities.register(modEventBus);
+        CT_FluidTypes.register(modEventBus);
+        CT_Fluids.register(modEventBus);
+
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.SERVER, Config.SPEC);
     }
@@ -57,6 +78,7 @@ public class Thermantics
     {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
+
         CT_Messages.register();
         TemperatureModifierRegistry.registerModifiers();
     }
@@ -77,9 +99,8 @@ public class Thermantics
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            ItemBlockRenderTypes.setRenderLayer(CT_Fluids.SOURCE_SCORCHING_COMPOUND.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(CT_Fluids.FLOWING_SCORCHING_COMPOUND.get(), RenderType.translucent());
         }
     }
 }

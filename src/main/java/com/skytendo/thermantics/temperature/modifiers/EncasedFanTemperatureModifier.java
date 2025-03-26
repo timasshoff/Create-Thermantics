@@ -6,6 +6,7 @@ import com.simibubi.create.content.kinetics.fan.EncasedFanBlockEntity;
 import com.simibubi.create.content.kinetics.fan.processing.AllFanProcessingTypes;
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingType;
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.util.BlockFinder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +17,6 @@ import java.util.List;
 public class EncasedFanTemperatureModifier implements TemperatureModifier{
     @Override
     public float modifyTemperature(Player player, Biome biome, float temperature) {
-
         List<BlockPos> blocks = BlockFinder.findBlocks(player.level(), player.blockPosition(), AllConfigs.server().kinetics.fanPushDistance.get() + 1, AllBlocks.ENCASED_FAN.get());
         if(blocks.isEmpty()) {
             return temperature;
@@ -40,13 +40,13 @@ public class EncasedFanTemperatureModifier implements TemperatureModifier{
                 }
 
                 if (type.equals(AllFanProcessingTypes.SMOKING)) {
-                    temperature += BlockFinder.getIsolatedRangedTemperatureModifier(player.level(), player.blockPosition(), fan.getAirCurrentPos().relative(current.direction, i), 3.5, 0.2);
+                    temperature += BlockFinder.getIsolatedRangedTemperatureModifier(player.level(), player.blockPosition(), fan.getAirCurrentPos().relative(current.direction, i), Config.FAN_SMOKING_BASE_TEMPERATURE_MODIFIER.get(), Config.FAN_SMOKING_TEMPERATURE_FALLOFF.get());
                 }
                 if (type.equals(AllFanProcessingTypes.BLASTING)) {
-                    temperature += BlockFinder.getIsolatedRangedTemperatureModifier(player.level(), player.blockPosition(), fan.getAirCurrentPos().relative(current.direction, i), 5.5, 0.2);
+                    temperature += BlockFinder.getIsolatedRangedTemperatureModifier(player.level(), player.blockPosition(), fan.getAirCurrentPos().relative(current.direction, i), Config.FAN_BLASTING_BASE_TEMPERATURE_MODIFIER.get(), Config.FAN_BLASTING_TEMPERATURE_FALLOFF.get());
                 }
                 if (type.equals(AllFanProcessingTypes.SPLASHING)) {
-                    temperature += BlockFinder.getIsolatedRangedTemperatureModifier(player.level(), player.blockPosition(), fan.getAirCurrentPos().relative(current.direction, i), -3.5, 0.4);
+                    temperature += BlockFinder.getIsolatedRangedTemperatureModifier(player.level(), player.blockPosition(), fan.getAirCurrentPos().relative(current.direction, i), Config.FAN_SPLASHING_BASE_TEMPERATURE_MODIFIER.get(), Config.FAN_SPLASHING_TEMPERATURE_FALLOFF.get());
                 }
             }
         }

@@ -21,5 +21,7 @@ public class DataGenerators {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeServer(), new CT_BlockTagProvider(output, lookupProvider, Thermantics.MODID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new CT_BlockStateProvider(output, Thermantics.MODID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new CT_ItemModelProvider(output, Thermantics.MODID, existingFileHelper));
     }
 }
