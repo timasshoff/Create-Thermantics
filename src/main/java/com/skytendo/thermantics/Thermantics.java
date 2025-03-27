@@ -5,18 +5,23 @@ import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.skytendo.thermantics.block.CT_BlockEntities;
 import com.skytendo.thermantics.block.CT_Blocks;
+import com.skytendo.thermantics.client.ClientTemperatureData;
 import com.skytendo.thermantics.fluid.CT_FluidTypes;
 import com.skytendo.thermantics.fluid.CT_Fluids;
 import com.skytendo.thermantics.item.CT_CreativeTabs;
 import com.skytendo.thermantics.item.CT_Items;
 import com.skytendo.thermantics.networking.CT_Messages;
+import com.skytendo.thermantics.ponder.ThermanticsPonder;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -101,6 +106,14 @@ public class Thermantics
         {
             ItemBlockRenderTypes.setRenderLayer(CT_Fluids.SOURCE_SCORCHING_COMPOUND.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(CT_Fluids.FLOWING_SCORCHING_COMPOUND.get(), RenderType.translucent());
+            PonderIndex.addPlugin(new ThermanticsPonder());
+
+            event.enqueueWork(() -> {
+                ItemProperties.register(CT_Items.THERMOMETER.get(), ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "temperature"), (stack, world, entity, id) -> {
+                    float temperature = ClientTemperatureData.get();
+                    return temperature / 100f;
+                });
+            });
         }
     }
 }

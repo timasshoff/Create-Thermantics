@@ -29,6 +29,9 @@ public class CT_Items {
     public static final RegistryObject<Item> FRIGID_COMPOUND_BUCKET = ITEMS.register("frigid_compound_bucket",
             () -> new BucketItem(CT_Fluids.SOURCE_FRIGID_COMPOUND, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
+    public static final RegistryObject<Item> THERMOMETER = ITEMS.register("thermometer",
+            () -> new ThermometerItem(new Item.Properties()));
+
 
     public CT_Items() {
     }

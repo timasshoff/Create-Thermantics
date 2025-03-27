@@ -21,6 +21,7 @@ public class CT_CreativeTabs {
                     .title(Component.translatable("creativetab.thermantics.default_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(CT_Blocks.THERMAL_EXCHANGER.get());
+                        output.accept(CT_Items.THERMOMETER.get());
                         output.accept(CT_Items.COLD_SCORCHING_COMPOUND_BUCKET.get());
                         output.accept(CT_Items.SCORCHING_COMPOUND_BUCKET.get());
                         output.accept(CT_Items.SUPERHEATED_SCORCHING_COMPOUND_BUCKET.get());

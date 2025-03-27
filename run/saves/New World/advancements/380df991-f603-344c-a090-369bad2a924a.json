@@ -8,11 +8,16 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:taiga": "2025-03-24 10:34:08 +0100",
+      "minecraft:frozen_river": "2025-03-27 12:39:06 +0100",
       "minecraft:beach": "2025-03-26 13:41:09 +0100",
       "minecraft:river": "2025-03-26 15:16:00 +0100",
+      "minecraft:snowy_plains": "2025-03-27 17:41:43 +0100",
       "minecraft:snowy_taiga": "2025-03-24 10:27:17 +0100",
       "minecraft:forest": "2025-03-23 20:17:46 +0100",
+      "minecraft:ice_spikes": "2025-03-27 17:41:30 +0100",
       "minecraft:desert": "2025-03-23 20:25:21 +0100",
+      "minecraft:snowy_beach": "2025-03-27 13:12:57 +0100",
+      "minecraft:windswept_savanna": "2025-03-27 12:35:47 +0100",
       "minecraft:savanna": "2025-03-26 15:16:08 +0100",
       "minecraft:plains": "2025-03-23 20:00:23 +0100"
     },

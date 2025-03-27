@@ -94,6 +94,12 @@ public class Config
             .comment("Defines how much heat gets absorbed by extremely isolating blocks")
             .defineInRange("extremeIsolation", 4.5, 0, 10);
 
+    // Temp Effects
+
+    public static final ForgeConfigSpec.IntValue NEW_TEMP_CLEMENCY_DURATION = BUILDER
+            .comment("Defines how many ticks the player is immune to new temperature effects after a temperature change")
+            .defineInRange("newTempClemencyDuration", 600, 0, 25000);
+
     // Thermal Exchanger
 
     public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_CONSUMPTION = BUILDER
@@ -103,6 +109,34 @@ public class Config
     public static final ForgeConfigSpec.DoubleValue THERMAL_EXCHANGER_TICKS_PER_MB = BUILDER
             .comment("Defines the ratio between consumed fuel and ticks")
             .defineInRange("thermalExchangerRatio", 2.0, 0.1, 10.0);
+
+    public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_RANGE = BUILDER
+            .comment("Defines the temperature range")
+            .defineInRange("thermalExchangerRange", 15, 0, 50);
+
+    public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_HEAT_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("thermalExchangerHeatBaseTemperatureModifier", 10, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue THERMAL_EXCHANGER_HEAT_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("thermalExchangerHeatTemperatureFalloff", 0.0, 0.0, 2.5);
+
+    public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_SUPERHEAT_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("thermalExchangerSuperheatBaseTemperatureModifier", 30, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue THERMAL_EXCHANGER_SUPERHEAT_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("thermalExchangerSuperheatTemperatureFalloff", 0.0, 0.0, 2.5);
+
+    public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_COOL_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("thermalExchangerCoolBaseTemperatureModifier", -25, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue THERMAL_EXCHANGER_COOL_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("thermalExchangerCoolTemperatureFalloff", 0.0, 0.0, 2.5);
 
     // Campfire
 

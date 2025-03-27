@@ -3,9 +3,7 @@ package com.skytendo.thermantics.temperature;
 import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
-import com.skytendo.thermantics.temperature.effects.PlayerFreezeEffect;
-import com.skytendo.thermantics.temperature.effects.RandomDamageEffect;
-import com.skytendo.thermantics.temperature.effects.TemperatureEffect;
+import com.skytendo.thermantics.temperature.effects.*;
 import com.skytendo.thermantics.temperature.modifiers.BasicModifiers;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifier;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
@@ -14,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
@@ -44,6 +43,7 @@ public class PlayerTemperatureManager {
         event.player.sendSystemMessage(Component.literal("Temperature: " + temperature.getTemperature()));
         event.player.sendSystemMessage(Component.literal("Base Biome Temperature: " + getBiomeTemperature(biome.get())));
         event.player.sendSystemMessage(Component.literal("Environment Temperature: " + environmentTemperature));
+        event.player.sendSystemMessage(Component.literal("Ticks in current temp state: " + temperature.getTicksInCurrentTempState()));
 
         CT_Messages.sendToPlayer(new TemperatureDataSyncS2CPacket(temperature.getTemperature()), (ServerPlayer) event.player);
     }
@@ -58,9 +58,18 @@ public class PlayerTemperatureManager {
     }
 
     public static void applyTemperatureEffects(PlayerTemperature temperature, TickEvent.PlayerTickEvent event) {
-        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FREEZING) {
-            if (temperature.getTicksInCurrentTempState() > 600) {
-                // Add effects here
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FIERY) {
+            if (temperature.getTicksInCurrentTempState() > Config.NEW_TEMP_CLEMENCY_DURATION.get()) {
+                new RandomDamageEffect(event.player, temperature, 0.05f).apply();
+                new RandomStatusEffect(event.player, temperature, 0.001f, MobEffects.CONFUSION, 4, 6, 1).apply();
+                new RandomPlayerBurnEffect(event.player, temperature, 0.001f, 3, 6).apply();
+            }
+        }
+
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.HOT) {
+            if (temperature.getTicksInCurrentTempState() > Config.NEW_TEMP_CLEMENCY_DURATION.get()) {
+                new RandomDamageEffect(event.player, temperature, 0.02f).apply();
+                new RandomStatusEffect(event.player, temperature, 0.0008f, MobEffects.CONFUSION, 3, 6, 2).apply();
             }
         }
     }

@@ -53,6 +53,6 @@ public class TemperatureHudOverlay {
         }
 
         RenderSystem.setShaderTexture(0, texture);
-        guiGraphics.blit(texture, x + 90, y - 18, 0, 0, 16, 16, 16, 16);
+        guiGraphics.blit(texture, x + 90, y - 27, 0, 0, 28, 28, 28, 28);
     });
 }
