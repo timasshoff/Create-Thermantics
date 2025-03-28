@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermantics:item/warm_frigid_compound_bucket"
+  }
+}

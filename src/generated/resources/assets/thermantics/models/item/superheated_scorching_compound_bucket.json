@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermantics:item/superheated_scorching_compound_bucket"
+  }
+}

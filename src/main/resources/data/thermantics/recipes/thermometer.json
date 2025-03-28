@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "s": {
+      "item": "create:brass_sheet"
+    },
+    "i": {
+      "item": "create:brass_ingot"
+    }
+  },
+  "pattern": [
+    "s",
+    "i",
+    "s"
+  ],
+  "result": {
+    "count": 1,
+    "item": "thermantics:thermometer"
+  }
+}

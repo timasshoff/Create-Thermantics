@@ -1,0 +1,6 @@
+// 1.20.1	2025-03-28T12:47:28.026315	Tags for minecraft:item mod id thermantics
+59712103a8787463e926f22300ce16a2e3332b96 data/create/tags/items/blaze_burner_fuel/regular.json
+c1a281af4b42342e0ea7c7911a0b02ae097fd834 data/create/tags/items/blaze_burner_fuel/special.json
+c5a26a067322c2b399964ab7cff330066442dc1d data/thermantics/tags/items/cold_armor.json
+36993ba55cda15eac9dcc20de8261cb27ac1ec9d data/thermantics/tags/items/very_warm_armor.json
+af7be9a9298915ff0f6a2b27d29f6d323af3ddd2 data/thermantics/tags/items/warm_armor.json

@@ -20,7 +20,9 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new CT_BlockTagProvider(output, lookupProvider, Thermantics.MODID, existingFileHelper));
+        CT_BlockTagProvider blockTagProvider = generator.addProvider(event.includeServer(), new CT_BlockTagProvider(output, lookupProvider, Thermantics.MODID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new CT_ItemTagProvider(output, lookupProvider, blockTagProvider.contentsGetter(), Thermantics.MODID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new CT_FluidTagProvider(output, lookupProvider, Thermantics.MODID, existingFileHelper));
         generator.addProvider(event.includeServer(), new CT_BlockStateProvider(output, Thermantics.MODID, existingFileHelper));
         generator.addProvider(event.includeServer(), new CT_ItemModelProvider(output, Thermantics.MODID, existingFileHelper));
     }

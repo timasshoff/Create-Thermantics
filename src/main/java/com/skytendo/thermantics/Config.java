@@ -96,9 +96,31 @@ public class Config
 
     // Temp Effects
 
+    public static final ForgeConfigSpec.BooleanValue DEATH_CLEMENCY = BUILDER
+            .comment("Defines if the player is immune to temperature effects after death")
+            .define("deathClemency", true);
+
+    public static final ForgeConfigSpec.IntValue DEATH_CLEMENCY_DURATION = BUILDER
+            .comment("Defines how long in ticks the player is immune to temperature effects after death")
+            .defineInRange("deathClemencyDuration", 1200, 0, 25000);
+
     public static final ForgeConfigSpec.IntValue NEW_TEMP_CLEMENCY_DURATION = BUILDER
             .comment("Defines how many ticks the player is immune to new temperature effects after a temperature change")
             .defineInRange("newTempClemencyDuration", 600, 0, 25000);
+
+    // Armor
+
+    public static final ForgeConfigSpec.DoubleValue WARM_ARMOR = BUILDER
+            .comment("Defines how warm warm armor is")
+            .defineInRange("warmArmor", 0.5, 0, 10);
+
+    public static final ForgeConfigSpec.DoubleValue VERY_WARM_ARMOR = BUILDER
+            .comment("Defines how warm very warm armor is")
+            .defineInRange("veryWarmArmor", 1.25, 0, 10);
+
+    public static final ForgeConfigSpec.DoubleValue COLD_ARMOR = BUILDER
+            .comment("Defines how much cold cold armor is")
+            .defineInRange("coldArmor", -0.75, 0, 10);
 
     // Thermal Exchanger
 
@@ -234,6 +256,53 @@ public class Config
             .comment("Defines the temperature falloff")
             .defineInRange("fanSplashingTemperatureFalloff", 0.2, 0, 2.5);
 
+    // Blaze Burner
+
+    public static final ForgeConfigSpec.IntValue BLAZE_BURNER_RANGE = BUILDER
+            .comment("Defines the heat range")
+            .defineInRange("blazeBurnerRange", 5, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue BLAZE_BURNER_NORMAL_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("blazeBurnerNormalBaseTemperatureModifier", 30.0, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue BLAZE_BURNER_NORMAL_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("blazeBurnerNormalTemperatureFalloff", 0.55, 0, 2.5);
+
+    public static final ForgeConfigSpec.DoubleValue BLAZE_BURNER_SPECIAL_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("blazeBurnerSpecialBaseTemperatureModifier", 47.0, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue BLAZE_BURNER_SPECIAL_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("blazeBurnerSpecialTemperatureFalloff", 0.45, 0, 2.5);
+
+    // Fluid Tank
+
+    public static final ForgeConfigSpec.IntValue FLUID_TANK_RANGE = BUILDER
+            .comment("Defines the heat range")
+            .defineInRange("fluidTankRange", 3, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue FLUID_TANK_FLUID_BUCKET_AMOUNT_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the how much temperature will be added / deducted per bucket of fluid")
+            .defineInRange("fluidTankRange", 0.2, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue FLUID_TANK_HOT_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("fluidTankHotBaseTemperatureModifier", 8.0, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue FLUID_TANK_HOT_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("fluidTankHotTemperatureFalloff", 0.45, 0, 2.5);
+
+    public static final ForgeConfigSpec.DoubleValue FLUID_TANK_COLD_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("fluidTankColdBaseTemperatureModifier", -8.0, -60, 60);
+
+    public static final ForgeConfigSpec.DoubleValue FLUID_TANK_COLD_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("fluidTankColdTemperatureFalloff", 0.45, 0, 2.5);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#forge:glass",
+    "#forge:fences",
+    "#forge:fence_gates",
+    "#minecraft:walls",
+    "#forge:chests",
+    "#minecraft:beds",
+    "create:copycat_panel",
+    "create:copycat_bars",
+    "create:copycat_step",
+    "create:copycat_base"
+  ]
+}

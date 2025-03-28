@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "create:block/copper_casing",
+    "side": "create:block/copper_casing",
+    "top": "thermantics:block/thermal_exchanger_top"
+  }
+}

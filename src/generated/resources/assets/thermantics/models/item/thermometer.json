@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "thermantics:item/thermometer_freezing",
+      "predicate": {
+        "thermantics:temperature": 0.0
+      }
+    },
+    {
+      "model": "thermantics:item/thermometer_cold",
+      "predicate": {
+        "thermantics:temperature": 0.1
+      }
+    },
+    {
+      "model": "thermantics:item/thermometer_chilly",
+      "predicate": {
+        "thermantics:temperature": 0.2
+      }
+    },
+    {
+      "model": "thermantics:item/thermometer_warm",
+      "predicate": {
+        "thermantics:temperature": 0.3
+      }
+    },
+    {
+      "model": "thermantics:item/thermometer_hot",
+      "predicate": {
+        "thermantics:temperature": 0.4
+      }
+    },
+    {
+      "model": "thermantics:item/thermometer_fiery",
+      "predicate": {
+        "thermantics:temperature": 0.5
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "thermantics:item/thermometer"
+  }
+}
