@@ -18,5 +18,7 @@
   "info.thermantics.hot": " (HOT)",
   "info.thermantics.fiery": " (FIERY)",
 
-  "effect.thermantics.clemency": "Clemency"
+  "effect.thermantics.clemency": "Clemency",
+  "effect.thermantics.hyperthermia": "Hyperthermia",
+  "effect.thermantics.hypothermia": "Hypothermia"
 }

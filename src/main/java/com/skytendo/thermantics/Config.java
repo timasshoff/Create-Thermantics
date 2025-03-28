@@ -108,6 +108,134 @@ public class Config
             .comment("Defines how many ticks the player is immune to new temperature effects after a temperature change")
             .defineInRange("newTempClemencyDuration", 600, 0, 25000);
 
+    // Hyperthermia
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_MOVEMENT_SPEED = BUILDER
+            .comment("Defines the movement speed attribute modifier")
+            .defineInRange("hyperthermiaMovementSpeedModifier", -0.22, -1, 1);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_ATTACK_SPEED = BUILDER
+            .comment("Defines the attack speed attribute modifier")
+            .defineInRange("hyperthermiaAttackSpeedModifier", -0.4, -1, 1);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_FIRE_CHANCE = BUILDER
+            .comment("Defines how likely it is to set the player on fire when having hyperthermia")
+            .defineInRange("hyperthermiaFireChance", 0.005, 0, 1);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_1_NAUSEA_CHANCE = BUILDER
+            .comment("Defines how likely it is to get nausea when having hyperthermia level 1")
+            .defineInRange("hyperthermia1NauseaChance", 0.005, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPERTHERMIA_1_NAUSEA_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get nausea when having hyperthermia level 1")
+            .defineInRange("hyperthermia1NauseaMaxLength", 200, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_2_NAUSEA_CHANCE = BUILDER
+            .comment("Defines how likely it is to get nausea when having hyperthermia level 2")
+            .defineInRange("hyperthermia2NauseaChance", 0.0065, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPERTHERMIA_2_NAUSEA_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get nausea when having hyperthermia level 1")
+            .defineInRange("hyperthermia2NauseaMaxLength", 300, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_1_MINING_FATIGUE_CHANCE = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hyperthermia level 1")
+            .defineInRange("hyperthermia1MiningFatigueChance", 0.006, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPERTHERMIA_1_MINING_FATIGUE_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hyperthermia level 1")
+            .defineInRange("hyperthermia1MiningFatigueMaxLength", 160, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_2_MINING_FATIGUE_CHANCE = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hyperthermia level 2")
+            .defineInRange("hyperthermia2MiningFatigueChance", 0.0075, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPERTHERMIA_2_MINING_FATIGUE_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hyperthermia level 1")
+            .defineInRange("hyperthermia2MiningFatigueMaxLength", 220, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_1_WEAKNESS_CHANCE = BUILDER
+            .comment("Defines how likely it is to get weakness when having hyperthermia level 1")
+            .defineInRange("hyperthermia1WeaknessChance", 0.003, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPERTHERMIA_1_WEAKNESS_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get weakness when having hyperthermia level 1")
+            .defineInRange("hyperthermia1WeaknessMaxLength", 160, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_2_WEAKNESS_CHANCE = BUILDER
+            .comment("Defines how likely it is to get weakness when having hyperthermia level 2")
+            .defineInRange("hyperthermia2WeaknessChance", 0.005, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPERTHERMIA_2_WEAKNESS_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get weakness when having hyperthermia level 1")
+            .defineInRange("hyperthermia2WeaknessMaxLength", 220, 0, 25000);
+
+    // Hypothermia
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_MOVEMENT_SPEED = BUILDER
+            .comment("Defines the movement speed attribute modifier")
+            .defineInRange("hypothermiaMovementSpeedModifier", -0.22, -1, 1);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_ATTACK_DAMAGE = BUILDER
+            .comment("Defines the attack damage attribute modifier")
+            .defineInRange("hypothermiaAttackSpeedModifier", -4.0, -10, 10);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_2_DAMAGE_CHANCE = BUILDER
+            .comment("Defines how likely it is to take damage when having hypothermia level 2")
+            .defineInRange("hypothermia2DamageChance", 0.005, 0, 1);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_3_DAMAGE_CHANCE = BUILDER
+            .comment("Defines how likely it is to take damage when having hypothermia level 3")
+            .defineInRange("hypothermia3DamageChance", 0.008, 0, 1);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_1_WEAKNESS_CHANCE = BUILDER
+            .comment("Defines how likely it is to get weakness when having hypothermia level 1")
+            .defineInRange("hypothermia1WeaknessChance", 0.005, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPOTHERMIA_1_WEAKNESS_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get weakness when having hypothermia level 1")
+            .defineInRange("hypothermia1WeaknessMaxLength", 200, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_2_WEAKNESS_CHANCE = BUILDER
+            .comment("Defines how likely it is to get weakness when having hypothermia level 2")
+            .defineInRange("hypothermia2WeaknessChance", 0.006, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPOTHERMIA_2_WEAKNESS_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get weakness when having hypothermia level 1")
+            .defineInRange("hypothermia2WeaknessMaxLength", 260, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_1_MINING_FATIGUE_CHANCE = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hypothermia level 1")
+            .defineInRange("hypothermia1MiningFatigueChance", 0.004, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPOTHERMIA_1_MINING_FATIGUE_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hypothermia level 1")
+            .defineInRange("hypothermia1MiningFatigueMaxLength", 200, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_2_MINING_FATIGUE_CHANCE = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hypothermia level 2")
+            .defineInRange("hypothermia2MiningFatigueChance", 0.005, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPOTHERMIA_2_MINING_FATIGUE_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get mining fatigue when having hypothermia level 1")
+            .defineInRange("hypothermia2MiningFatigueMaxLength", 260, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_2_BLINDNESS_CHANCE = BUILDER
+            .comment("Defines how likely it is to get blindness when having hypothermia level 2")
+            .defineInRange("hypothermia1BlindnessChance", 0.0037, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPOTHERMIA_2_BLINDNESS_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get blindness when having hypothermia level 2")
+            .defineInRange("hypothermia1BlindnessMaxLength", 120, 0, 25000);
+
+    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_3_BLINDNESS_CHANCE = BUILDER
+            .comment("Defines how likely it is to get blindness when having hypothermia level 3")
+            .defineInRange("hypothermia2BlindnessChance", 0.005, 0, 10);
+
+    public static final ForgeConfigSpec.IntValue HYPOTHERMIA_3_BLINDNESS_MAX_LENGTH = BUILDER
+            .comment("Defines how likely it is to get blindness when having hypothermia level 3")
+            .defineInRange("hypothermia2BlindnessMaxLength", 200, 0, 25000);
+
     // Armor
 
     public static final ForgeConfigSpec.DoubleValue WARM_ARMOR = BUILDER

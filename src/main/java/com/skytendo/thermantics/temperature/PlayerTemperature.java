@@ -31,7 +31,7 @@ public class PlayerTemperature {
             return PlayerTemperature.TemperatureState.CHILLY;
         } else if (playerTemperature < 40.0f) {
             return PlayerTemperature.TemperatureState.WARM;
-        } else if (playerTemperature < 50.0f) {
+        } else if (playerTemperature < 51.0f) {
             return PlayerTemperature.TemperatureState.HOT;
         } else {
             return PlayerTemperature.TemperatureState.FIERY;

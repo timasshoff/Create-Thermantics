@@ -4,22 +4,15 @@ import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.effect.CT_Effects;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
-import com.skytendo.thermantics.temperature.effects.*;
-import com.skytendo.thermantics.temperature.modifiers.BasicModifiers;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifier;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
-import com.skytendo.thermantics.util.BlockFinder;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.TickEvent;
-
-import java.util.List;
 
 public class PlayerTemperatureManager {
 
@@ -66,15 +59,30 @@ public class PlayerTemperatureManager {
             return;
         }
 
-        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FIERY) {
-            new RandomDamageEffect(event.player, temperature, 0.05f).apply();
-            new RandomStatusEffect(event.player, temperature, 0.001f, MobEffects.CONFUSION, 4, 6, 1).apply();
-            new RandomPlayerBurnEffect(event.player, temperature, 0.001f, 3, 6).apply();
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FREEZING) {
+            if (!event.player.hasEffect(CT_Effects.HYPOTHERMIA.get())) {
+                event.player.addEffect(new MobEffectInstance(CT_Effects.HYPOTHERMIA.get(), 180, 2, false, false, true));
+            }
         }
-
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.COLD) {
+            if (!event.player.hasEffect(CT_Effects.HYPOTHERMIA.get())) {
+                event.player.addEffect(new MobEffectInstance(CT_Effects.HYPOTHERMIA.get(), 180, 1, false, false, true));
+            }
+        }
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.CHILLY) {
+            if (!event.player.hasEffect(CT_Effects.HYPOTHERMIA.get())) {
+                event.player.addEffect(new MobEffectInstance(CT_Effects.HYPOTHERMIA.get(), 180, 0, false, false, true));
+            }
+        }
         if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.HOT) {
-            new RandomDamageEffect(event.player, temperature, 0.02f).apply();
-            new RandomStatusEffect(event.player, temperature, 0.0008f, MobEffects.CONFUSION, 3, 6, 2).apply();
+            if (!event.player.hasEffect(CT_Effects.HYPERTHERMIA.get())) {
+                event.player.addEffect(new MobEffectInstance(CT_Effects.HYPERTHERMIA.get(), 180, 0, false, false, true));
+            }
+        }
+        if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FIERY) {
+            if (!event.player.hasEffect(CT_Effects.HYPERTHERMIA.get())) {
+                event.player.addEffect(new MobEffectInstance(CT_Effects.HYPERTHERMIA.get(), 180, 1, false, false, true));
+            }
         }
     }
 
