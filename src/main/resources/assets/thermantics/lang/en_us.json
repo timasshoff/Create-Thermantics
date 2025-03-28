@@ -16,5 +16,7 @@
   "info.thermantics.chilly": " (CHILLY)",
   "info.thermantics.warm": " (WARM)",
   "info.thermantics.hot": " (HOT)",
-  "info.thermantics.fiery": " (FIERY)"
+  "info.thermantics.fiery": " (FIERY)",
+
+  "effect.thermantics.clemency": "Clemency"
 }

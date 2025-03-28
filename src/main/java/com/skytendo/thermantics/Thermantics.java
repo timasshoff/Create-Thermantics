@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.skytendo.thermantics.block.CT_BlockEntities;
 import com.skytendo.thermantics.block.CT_Blocks;
 import com.skytendo.thermantics.client.ClientTemperatureData;
+import com.skytendo.thermantics.effect.CT_Effects;
 import com.skytendo.thermantics.fluid.CT_FluidTypes;
 import com.skytendo.thermantics.fluid.CT_Fluids;
 import com.skytendo.thermantics.item.CT_CreativeTabs;
@@ -74,6 +75,7 @@ public class Thermantics
         CT_BlockEntities.register(modEventBus);
         CT_FluidTypes.register(modEventBus);
         CT_Fluids.register(modEventBus);
+        CT_Effects.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.SERVER, Config.SPEC);

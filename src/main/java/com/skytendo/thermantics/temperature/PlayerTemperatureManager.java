@@ -1,6 +1,7 @@
 package com.skytendo.thermantics.temperature;
 
 import com.skytendo.thermantics.Config;
+import com.skytendo.thermantics.effect.CT_Effects;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
 import com.skytendo.thermantics.temperature.effects.*;
@@ -58,19 +59,22 @@ public class PlayerTemperatureManager {
     }
 
     public static void applyTemperatureEffects(PlayerTemperature temperature, TickEvent.PlayerTickEvent event) {
+        if (temperature.getTicksInCurrentTempState() <= Config.NEW_TEMP_CLEMENCY_DURATION.get()) {
+            return;
+        }
+        if (event.player.hasEffect(CT_Effects.CLEMENCY.get())) {
+            return;
+        }
+
         if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FIERY) {
-            if (temperature.getTicksInCurrentTempState() > Config.NEW_TEMP_CLEMENCY_DURATION.get()) {
-                new RandomDamageEffect(event.player, temperature, 0.05f).apply();
-                new RandomStatusEffect(event.player, temperature, 0.001f, MobEffects.CONFUSION, 4, 6, 1).apply();
-                new RandomPlayerBurnEffect(event.player, temperature, 0.001f, 3, 6).apply();
-            }
+            new RandomDamageEffect(event.player, temperature, 0.05f).apply();
+            new RandomStatusEffect(event.player, temperature, 0.001f, MobEffects.CONFUSION, 4, 6, 1).apply();
+            new RandomPlayerBurnEffect(event.player, temperature, 0.001f, 3, 6).apply();
         }
 
         if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.HOT) {
-            if (temperature.getTicksInCurrentTempState() > Config.NEW_TEMP_CLEMENCY_DURATION.get()) {
-                new RandomDamageEffect(event.player, temperature, 0.02f).apply();
-                new RandomStatusEffect(event.player, temperature, 0.0008f, MobEffects.CONFUSION, 3, 6, 2).apply();
-            }
+            new RandomDamageEffect(event.player, temperature, 0.02f).apply();
+            new RandomStatusEffect(event.player, temperature, 0.0008f, MobEffects.CONFUSION, 3, 6, 2).apply();
         }
     }
 

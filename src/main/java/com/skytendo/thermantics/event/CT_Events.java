@@ -1,6 +1,8 @@
 package com.skytendo.thermantics.event;
 
+import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.Thermantics;
+import com.skytendo.thermantics.effect.CT_Effects;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
 import com.skytendo.thermantics.temperature.PlayerTemperature;
@@ -9,6 +11,7 @@ import com.skytendo.thermantics.temperature.PlayerTemperatureProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -59,6 +62,13 @@ public class CT_Events {
                 PlayerTemperatureManager.applyTemperatureEffects(temperature, event);
             });
         }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+       if (Config.DEATH_CLEMENCY.get()) {
+           event.getEntity().addEffect(new MobEffectInstance(CT_Effects.CLEMENCY.get(), Config.DEATH_CLEMENCY_DURATION.get(), 0, false, false, true));
+       }
     }
 
     @SubscribeEvent
