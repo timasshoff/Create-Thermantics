@@ -136,7 +136,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_1_MINING_FATIGUE_CHANCE = BUILDER
             .comment("Defines how likely it is to get mining fatigue when having hyperthermia level 1")
-            .defineInRange("hyperthermia1MiningFatigueChance", 0.006, 0, 10);
+            .defineInRange("hyperthermia1MiningFatigueChance", 0.0065, 0, 10);
 
     public static final ForgeConfigSpec.IntValue HYPERTHERMIA_1_MINING_FATIGUE_MAX_LENGTH = BUILDER
             .comment("Defines how likely it is to get mining fatigue when having hyperthermia level 1")
@@ -194,7 +194,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_1_MINING_FATIGUE_CHANCE = BUILDER
             .comment("Defines how likely it is to get mining fatigue when having hypothermia level 1")
-            .defineInRange("hypothermia1MiningFatigueChance", 0.004, 0, 10);
+            .defineInRange("hypothermia1MiningFatigueChance", 0.0045, 0, 10);
 
     public static final ForgeConfigSpec.IntValue HYPOTHERMIA_1_MINING_FATIGUE_MAX_LENGTH = BUILDER
             .comment("Defines how likely it is to get mining fatigue when having hypothermia level 1")

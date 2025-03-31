@@ -20,7 +20,7 @@ license="MIT"
 # The modid of the mod
 modId="thermantics" #mandatory
 # The version number of the mod
-version="1.20.1-b4-1.0.0" #mandatory
+version="1.20.1-b5-1.0.0" #mandatory
 # A display name for the mod
 displayName="Create: Thermantics" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
@@ -42,8 +42,7 @@ authors="Skytendo06" #optional
 #displayTest="MATCH_VERSION" # if nothing is specified, MATCH_VERSION is the default when clientSideOnly=false, otherwise IGNORE_ALL_VERSION when clientSideOnly=true (#optional)
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''Example mod description.
-Newline characters can be used and will be replaced properly.'''
+description='''Create: Thermantics adds a player temperature system to the create mod.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.thermantics]] #optional
     # the modid of the dependency
