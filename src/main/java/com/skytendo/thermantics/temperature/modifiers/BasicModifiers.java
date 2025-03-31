@@ -13,7 +13,10 @@ public class BasicModifiers {
     public static class HeightBiomeModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
-            if (player.level().dimension() != Level.OVERWORLD) {
+            if (player.level().dimension() == Level.NETHER) {
+                return PlayerTemperatureManager.getBiomeTemperature(biome) + 1.5f;
+            }
+            if (player.level().dimension() == Level.END) {
                 return PlayerTemperatureManager.getBiomeTemperature(biome);
             }
             if (Config.MIN_HEIGHT_BIOME_TEMP.get() < player.getY() && player.getY() < Config.MAX_HEIGHT_BIOME_TEMP.get()) {
