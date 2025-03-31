@@ -12,6 +12,12 @@
   "fluid_type.thermantics.frigid_compound": "Frigid Compound",
   "fluid_type.thermantics.warm_frigid_compound": "Warm Frigid Compound",
 
+  "items.thermantics.cold_scorching_compound_bucket": "Cold Scorching Compound Bucket",
+  "items.thermantics.scorching_compound_bucket": "Scorching Compound Bucket",
+  "items.thermantics.superheated_scorching_compound_bucket": "Superheated Scorching Compound Bucket",
+  "items.thermantics.warm_frigid_compound": "Warm Frigid Compound Bucket",
+  "items.thermantics.frigid_compound": "Frigid Compound Bucket",
+
   "item.thermantics.thermometer": "Thermometer",
   "summary.thermantics.thermometer": "This is a thermometer that can be used to measure the temperature of the players environment.",
   "info.thermantics.own_temperature": "Current temperature: ",

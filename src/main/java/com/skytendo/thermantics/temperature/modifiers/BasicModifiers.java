@@ -94,6 +94,7 @@ public class BasicModifiers {
             temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.FIRE, Config.FIRE_RANGE.get(), Config.FIRE_BASE_TEMPERATURE_MODIFIER.get(), Config.FIRE_TEMPERATURE_FALLOFF.get());
             temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.LAVA, Config.LAVA_RANGE.get(), Config.LAVA_BASE_TEMPERATURE_MODIFIER.get(), Config.LAVA_TEMPERATURE_FALLOFF.get());
             temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.TORCH, Config.TORCH_RANGE.get(), Config.TORCH_BASE_TEMPERATURE_MODIFIER.get(), Config.TORCH_TEMPERATURE_FALLOFF.get());
+            temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.MAGMA_BLOCK, Config.FIRE_RANGE.get(), Config.FIRE_BASE_TEMPERATURE_MODIFIER.get(), Config.FIRE_TEMPERATURE_FALLOFF.get());
             return temperature;
         }
     }

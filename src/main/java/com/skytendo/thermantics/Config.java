@@ -1,6 +1,7 @@
 package com.skytendo.thermantics;
 
 
+import net.minecraftforge.common.ForgeConfig;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +14,9 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+
+    public static final ForgeConfigSpec.BooleanValue DEBUG_INFO = BUILDER
+            .define("debugInfo", false);
 
     public static final ForgeConfigSpec.DoubleValue UPDATE_CHANCE_FREEZING = BUILDER
             .comment("The chance of updating the player's temperature when they are freezing")
@@ -28,7 +32,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue UPDATE_CHANCE_DEFAULT = BUILDER
             .comment("The chance of updating the player's temperature when they are in a normal environment")
-            .defineInRange("updateChanceDefault", 0.005, 0.0, 1.0);
+            .defineInRange("updateChanceDefault", 0.0037, 0.0, 1.0);
 
     public static final ForgeConfigSpec.DoubleValue TEMP_DIFFERENCE_SNAP = BUILDER
             .comment("Defines how close to the environment temperature the player temp has to be to snap to the target temperature")
@@ -36,7 +40,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue TEMP_ADJUSTMENT_SPEED = BUILDER
             .comment("Defines how quickly the player temperature adjusts to the environment temperature")
-            .defineInRange("tempAdjustmentSpeed", 0.6, 0.0, 2.5);
+            .defineInRange("tempAdjustmentSpeed", 0.5, 0.0, 2.5);
 
     public static final ForgeConfigSpec.IntValue MIN_HEIGHT_BIOME_TEMP = BUILDER
             .comment("Defines the minimum height for the biome temperature to be applied")
@@ -56,7 +60,7 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue IN_WATER_TEMPERATURE_MODIFIER = BUILDER
             .comment("Defines how being in water modifies the environment temperature")
-            .defineInRange("waterTemperatureModifier", -9.0, -60, 60);
+            .defineInRange("waterTemperatureModifier", -12.0, -60, 60);
 
     public static final ForgeConfigSpec.DoubleValue FREEZING_TEMPERATURE_MODIFIER = BUILDER
             .comment("Defines how freezing modifies the environment temperature")
@@ -224,29 +228,29 @@ public class Config
 
     public static final ForgeConfigSpec.DoubleValue WARM_ARMOR = BUILDER
             .comment("Defines how warm warm armor is")
-            .defineInRange("warmArmor", 0.5, 0, 10);
+            .defineInRange("warmArmor", 0.75, -10, 10);
 
     public static final ForgeConfigSpec.DoubleValue VERY_WARM_ARMOR = BUILDER
             .comment("Defines how warm very warm armor is")
-            .defineInRange("veryWarmArmor", 1.25, 0, 10);
+            .defineInRange("veryWarmArmor", 2.25, -10, 10);
 
     public static final ForgeConfigSpec.DoubleValue COLD_ARMOR = BUILDER
             .comment("Defines how much cold cold armor is")
-            .defineInRange("coldArmor", -0.75, 0, 10);
+            .defineInRange("coldArmor", -1.5, -10, 10);
 
     // Thermal Exchanger
 
     public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_CONSUMPTION = BUILDER
             .comment("Defines how the maximal amount fuel the thermal exchanger consumes")
-            .defineInRange("thermalExchangerConsumption", 100, 1, 1000);
+            .defineInRange("thermalExchangerConsumption", 500, 1, 1000);
 
     public static final ForgeConfigSpec.DoubleValue THERMAL_EXCHANGER_TICKS_PER_MB = BUILDER
             .comment("Defines the ratio between consumed fuel and ticks")
-            .defineInRange("thermalExchangerRatio", 2.0, 0.1, 10.0);
+            .defineInRange("thermalExchangerRatio", 1.0, 0.1, 10.0);
 
     public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_RANGE = BUILDER
             .comment("Defines the temperature range")
-            .defineInRange("thermalExchangerRange", 15, 0, 50);
+            .defineInRange("thermalExchangerRange", 13, 0, 50);
 
     public static final ForgeConfigSpec.IntValue THERMAL_EXCHANGER_HEAT_BASE_TEMPERATURE_MODIFIER = BUILDER
             .comment("Defines the temperature modifier when as close as possible")
@@ -290,15 +294,15 @@ public class Config
 
     public static final ForgeConfigSpec.IntValue FURNACES_RANGE = BUILDER
             .comment("Defines the heat range")
-            .defineInRange("furnacesRange", 5, 0, 50);
+            .defineInRange("furnacesRange", 3, 0, 50);
 
     public static final ForgeConfigSpec.DoubleValue FURNACES_BASE_TEMPERATURE_MODIFIER = BUILDER
             .comment("Defines the temperature modifier when as close as possible")
-            .defineInRange("furnacesBaseTemperatureModifier", 22.0, 0, 60);
+            .defineInRange("furnacesBaseTemperatureModifier", 15.0, 0, 60);
 
     public static final ForgeConfigSpec.DoubleValue FURNACES_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
-            .defineInRange("furnacesBaseTemperatureFalloff", 0.35, 0, 2.5);
+            .defineInRange("furnacesBaseTemperatureFalloff", 0.45, 0, 2.5);
 
     // Fire
 

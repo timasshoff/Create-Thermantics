@@ -17,7 +17,7 @@ public class CT_CreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Thermantics.MODID);
 
     public static final RegistryObject<CreativeModeTab> THERMANTICS_TAB = CREATIVE_MODE_TABS.register("thermantics_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AllItems.ANDESITE_ALLOY.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(CT_Items.THERMOMETER.get()))
                     .title(Component.translatable("creativetab.thermantics.default_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(CT_Blocks.THERMAL_EXCHANGER.get());

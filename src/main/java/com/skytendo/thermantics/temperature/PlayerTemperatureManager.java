@@ -36,11 +36,14 @@ public class PlayerTemperatureManager {
         Holder<Biome> biome =  event.player.level().getBiome(event.player.blockPosition());
         float environmentTemperature = calculateEnvironmentTemperature(biome.get(), event.player);
         adjustTemperature(temperature, environmentTemperature);
-        event.player.sendSystemMessage(Component.literal("---------"));
-        event.player.sendSystemMessage(Component.literal("Temperature: " + temperature.getTemperature()));
-        event.player.sendSystemMessage(Component.literal("Base Biome Temperature: " + getBiomeTemperature(biome.get())));
-        event.player.sendSystemMessage(Component.literal("Environment Temperature: " + environmentTemperature));
-        event.player.sendSystemMessage(Component.literal("Ticks in current temp state: " + temperature.getTicksInCurrentTempState()));
+
+        if (Config.DEBUG_INFO.get()) {
+            event.player.sendSystemMessage(Component.literal("---------"));
+            event.player.sendSystemMessage(Component.literal("Temperature: " + temperature.getTemperature()));
+            event.player.sendSystemMessage(Component.literal("Base Biome Temperature: " + getBiomeTemperature(biome.get())));
+            event.player.sendSystemMessage(Component.literal("Environment Temperature: " + environmentTemperature));
+            event.player.sendSystemMessage(Component.literal("Ticks in current temp state: " + temperature.getTicksInCurrentTempState()));
+        }
 
         CT_Messages.sendToPlayer(new TemperatureDataSyncS2CPacket(temperature.getTemperature()), (ServerPlayer) event.player);
     }
@@ -59,6 +62,9 @@ public class PlayerTemperatureManager {
             return;
         }
         if (event.player.hasEffect(CT_Effects.CLEMENCY.get())) {
+            return;
+        }
+        if (event.player.isCreative()) {
             return;
         }
 
