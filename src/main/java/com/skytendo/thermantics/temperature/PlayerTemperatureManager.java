@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.TickEvent;
 
@@ -95,6 +96,9 @@ public class PlayerTemperatureManager {
     }
 
     private static boolean hasHyperthermiaIsolation(Player player) {
+        if (player.level().dimension() != Level.NETHER) {
+            return false;
+        }
         for (ItemStack stack : player.getArmorSlots()) {
             if (stack.is(CT_ItemTags.HYPERTHERMIA_ISOLATING_ARMOR)) {
                 continue;
