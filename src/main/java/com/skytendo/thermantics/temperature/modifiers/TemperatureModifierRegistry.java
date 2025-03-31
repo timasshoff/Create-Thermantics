@@ -21,7 +21,9 @@ public class TemperatureModifierRegistry {
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.NightModifier());
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.RainModifier());
         TemperatureModifierRegistry.registerModifier(new BasicModifiers.VanillaBlocksModifier());
+        TemperatureModifierRegistry.registerModifier(new CampfireModifier());
         TemperatureModifierRegistry.registerModifier(new ArmorTemperatureModifier());
+        TemperatureModifierRegistry.registerModifier(new AbstractFurnaceTemperatureModifier());
         TemperatureModifierRegistry.registerModifier(new EncasedFanTemperatureModifier());
         TemperatureModifierRegistry.registerModifier(new BlazeBurnerTemperatureModifier());
         TemperatureModifierRegistry.registerModifier(new FluidTankTemperatureModifier());

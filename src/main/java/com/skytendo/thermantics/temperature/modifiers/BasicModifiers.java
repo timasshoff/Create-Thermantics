@@ -91,11 +91,9 @@ public class BasicModifiers {
     public static class VanillaBlocksModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
-            temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.CAMPFIRE, Config.CAMPFIRE_RANGE.get(), Config.CAMPFIRE_BASE_TEMPERATURE_MODIFIER.get(), Config.CAMPFIRE_TEMPERATURE_FALLOFF.get());
             temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.FIRE, Config.FIRE_RANGE.get(), Config.FIRE_BASE_TEMPERATURE_MODIFIER.get(), Config.FIRE_TEMPERATURE_FALLOFF.get());
             temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.LAVA, Config.LAVA_RANGE.get(), Config.LAVA_BASE_TEMPERATURE_MODIFIER.get(), Config.LAVA_TEMPERATURE_FALLOFF.get());
             temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.TORCH, Config.TORCH_RANGE.get(), Config.TORCH_BASE_TEMPERATURE_MODIFIER.get(), Config.TORCH_TEMPERATURE_FALLOFF.get());
-            temperature += BlockFinder.checkAndCalculateTemperatureModifier(player.level(), player.blockPosition(), Blocks.REDSTONE_TORCH, Config.REDSTONE_TORCH_RANGE.get(), Config.REDSTONE_TORCH_BASE_TEMPERATURE_MODIFIER.get(), Config.REDSTONE_TORCH_TEMPERATURE_FALLOFF.get());
             return temperature;
         }
     }

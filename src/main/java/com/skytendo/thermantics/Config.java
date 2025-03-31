@@ -286,6 +286,20 @@ public class Config
             .comment("Defines the temperature falloff")
             .defineInRange("campfireBaseTemperatureFalloff", 0.35, 0, 2.5);
 
+    // Furnaces
+
+    public static final ForgeConfigSpec.IntValue FURNACES_RANGE = BUILDER
+            .comment("Defines the heat range")
+            .defineInRange("furnacesRange", 5, 0, 50);
+
+    public static final ForgeConfigSpec.DoubleValue FURNACES_BASE_TEMPERATURE_MODIFIER = BUILDER
+            .comment("Defines the temperature modifier when as close as possible")
+            .defineInRange("furnacesBaseTemperatureModifier", 22.0, 0, 60);
+
+    public static final ForgeConfigSpec.DoubleValue FURNACES_TEMPERATURE_FALLOFF = BUILDER
+            .comment("Defines the temperature falloff")
+            .defineInRange("furnacesBaseTemperatureFalloff", 0.35, 0, 2.5);
+
     // Fire
 
     public static final ForgeConfigSpec.IntValue FIRE_RANGE = BUILDER
@@ -327,20 +341,6 @@ public class Config
     public static final ForgeConfigSpec.DoubleValue TORCH_TEMPERATURE_FALLOFF = BUILDER
             .comment("Defines the temperature falloff")
             .defineInRange("torchBaseTemperaturFalloff", 0.42, 0, 2.5);
-
-    // Redstone Torch
-
-    public static final ForgeConfigSpec.IntValue REDSTONE_TORCH_RANGE = BUILDER
-            .comment("Defines how the heat range")
-            .defineInRange("redstoneTorchRange", 2, 0, 50);
-
-    public static final ForgeConfigSpec.DoubleValue REDSTONE_TORCH_BASE_TEMPERATURE_MODIFIER = BUILDER
-            .comment("Defines the temperature modifier when as close as possible")
-            .defineInRange("redstoneTorchBaseTemperatureModifier", 8.0, 0, 60);
-
-    public static final ForgeConfigSpec.DoubleValue REDSTONE_TORCH_TEMPERATURE_FALLOFF = BUILDER
-            .comment("Defines the temperature falloff")
-            .defineInRange("redstoneTorchBaseTemperaturFalloff", 0.55, 0, 2.5);
 
     // Encased Fan
 
