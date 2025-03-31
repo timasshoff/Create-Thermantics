@@ -39,11 +39,7 @@ public class CT_ItemTagProvider extends ItemTagsProvider {
                 .add(Items.DIAMOND_HELMET)
                 .add(Items.DIAMOND_CHESTPLATE)
                 .add(Items.DIAMOND_LEGGINGS)
-                .add(Items.DIAMOND_BOOTS)
-                .add(Items.NETHERITE_HELMET)
-                .add(Items.NETHERITE_CHESTPLATE)
-                .add(Items.NETHERITE_LEGGINGS)
-                .add(Items.NETHERITE_BOOTS);
+                .add(Items.DIAMOND_BOOTS);
         tag(CT_ItemTags.VERY_WARM_ARMOR)
                 .add(Items.LEATHER_HELMET)
                 .add(Items.LEATHER_CHESTPLATE)
@@ -54,5 +50,10 @@ public class CT_ItemTagProvider extends ItemTagsProvider {
                 .add(Items.CHAINMAIL_CHESTPLATE)
                 .add(Items.CHAINMAIL_LEGGINGS)
                 .add(Items.CHAINMAIL_BOOTS);
+        tag(CT_ItemTags.HYPERTHERMIA_ISOLATING_ARMOR)
+                .add(Items.NETHERITE_HELMET)
+                .add(Items.NETHERITE_CHESTPLATE)
+                .add(Items.NETHERITE_LEGGINGS)
+                .add(Items.NETHERITE_BOOTS);
     }
 }

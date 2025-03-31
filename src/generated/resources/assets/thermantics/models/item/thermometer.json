@@ -34,7 +34,7 @@
     {
       "model": "thermantics:item/thermometer_fiery",
       "predicate": {
-        "thermantics:temperature": 0.5
+        "thermantics:temperature": 0.51
       }
     }
   ],

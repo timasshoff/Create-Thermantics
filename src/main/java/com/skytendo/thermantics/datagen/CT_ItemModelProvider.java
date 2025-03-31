@@ -21,6 +21,7 @@ public class CT_ItemModelProvider extends ItemModelProvider {
         basicItem(CT_Items.SUPERHEATED_SCORCHING_COMPOUND_BUCKET.get());
         basicItem(CT_Items.WARM_FRIGID_COMPOUND_BUCKET.get());
         basicItem(CT_Items.FRIGID_COMPOUND_BUCKET.get());
+        basicItem(CT_Items.RADIATOR.get());
 
         ModelFile freezingThermometer = withExistingParent("thermometer_freezing", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/thermometer_freezing"));
@@ -40,7 +41,7 @@ public class CT_ItemModelProvider extends ItemModelProvider {
                 .override().predicate(ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "temperature"), 0.2f).model(chillyThermometer).end()
                 .override().predicate(ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "temperature"), 0.3f).model(warmThermometer).end()
                 .override().predicate(ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "temperature"), 0.4f).model(hotThermometer).end()
-                .override().predicate(ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "temperature"), 0.5f).model(fieryThermometer).end();
+                .override().predicate(ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "temperature"), 0.51f).model(fieryThermometer).end();
 
     }
 }

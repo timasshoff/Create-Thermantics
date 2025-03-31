@@ -166,8 +166,12 @@ public class ThermalExchangerBlockEntity extends SmartBlockEntity implements IHa
         return mode;
     }
 
-    public int getTicksLeft() {
-        return ticksLeft;
+    public SmartFluidTankBehaviour getInputTank() {
+        return inputTank;
+    }
+
+    public SmartFluidTankBehaviour getOutputTank() {
+        return outputTank;
     }
 
     @Override

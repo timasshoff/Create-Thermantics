@@ -6,11 +6,13 @@ import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifier;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
+import com.skytendo.thermantics.util.CT_ItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.TickEvent;
 
@@ -75,15 +77,31 @@ public class PlayerTemperatureManager {
             }
         }
         if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.HOT) {
+            if (hasHyperthermiaIsolation(event.player)) {
+                return;
+            }
             if (!event.player.hasEffect(CT_Effects.HYPERTHERMIA.get())) {
                 event.player.addEffect(new MobEffectInstance(CT_Effects.HYPERTHERMIA.get(), 180, 0, false, false, true));
             }
         }
         if (temperature.getCurrentTempState() == PlayerTemperature.TemperatureState.FIERY) {
+            if (hasHyperthermiaIsolation(event.player)) {
+                return;
+            }
             if (!event.player.hasEffect(CT_Effects.HYPERTHERMIA.get())) {
                 event.player.addEffect(new MobEffectInstance(CT_Effects.HYPERTHERMIA.get(), 180, 1, false, false, true));
             }
         }
+    }
+
+    private static boolean hasHyperthermiaIsolation(Player player) {
+        for (ItemStack stack : player.getArmorSlots()) {
+            if (stack.is(CT_ItemTags.HYPERTHERMIA_ISOLATING_ARMOR)) {
+                continue;
+            }
+            return false;
+        }
+        return true;
     }
 
     private static float calculateEnvironmentTemperature(Biome biome, Player player) {

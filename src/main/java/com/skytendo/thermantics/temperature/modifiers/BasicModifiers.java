@@ -13,9 +13,6 @@ public class BasicModifiers {
     public static class HeightBiomeModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
-            System.out.println(Config.MIN_HEIGHT_BIOME_TEMP.get());
-            System.out.println(player.getY());
-            System.out.println(Config.MAX_HEIGHT_BIOME_TEMP.get());
             if (Config.MIN_HEIGHT_BIOME_TEMP.get() < player.getY() && player.getY() < Config.MAX_HEIGHT_BIOME_TEMP.get()) {
                 temperature = PlayerTemperatureManager.getBiomeTemperature(biome);
             } else if (player.getY() < Config.MIN_HEIGHT_BIOME_TEMP.get()) {
@@ -24,6 +21,10 @@ public class BasicModifiers {
                 temperature = (float) (double) Config.ABOVE_BIOME_TEMP.get();
             }
             return temperature;
+        }
+
+        public static boolean isPlayerInBiomeHeight(Player player) {
+            return Config.MIN_HEIGHT_BIOME_TEMP.get() < player.getY() && player.getY() < Config.MAX_HEIGHT_BIOME_TEMP.get();
         }
     }
 
@@ -70,7 +71,7 @@ public class BasicModifiers {
     public static class NightModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
-            if (player.level().isNight()) {
+            if (player.level().isNight() && HeightBiomeModifier.isPlayerInBiomeHeight(player)) {
                 temperature += Config.NIGHT_TEMPERATURE_MODIFIER.get();
             }
             return temperature;
@@ -80,7 +81,7 @@ public class BasicModifiers {
     public static class RainModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
-            if (player.level().isRaining()) {
+            if (player.level().isRaining() && HeightBiomeModifier.isPlayerInBiomeHeight(player)) {
                 temperature += Config.RAIN_MODIFIER.get();
             }
             return temperature;

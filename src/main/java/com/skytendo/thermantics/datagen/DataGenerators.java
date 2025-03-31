@@ -25,5 +25,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new CT_FluidTagProvider(output, lookupProvider, Thermantics.MODID, existingFileHelper));
         generator.addProvider(event.includeServer(), new CT_BlockStateProvider(output, Thermantics.MODID, existingFileHelper));
         generator.addProvider(event.includeServer(), new CT_ItemModelProvider(output, Thermantics.MODID, existingFileHelper));
+
+        generator.addProvider(event.includeServer(), new CT_GlobalLootModifiersProvider(output));
     }
 }

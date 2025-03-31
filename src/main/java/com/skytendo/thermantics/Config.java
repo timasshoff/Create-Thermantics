@@ -110,14 +110,6 @@ public class Config
 
     // Hyperthermia
 
-    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_MOVEMENT_SPEED = BUILDER
-            .comment("Defines the movement speed attribute modifier")
-            .defineInRange("hyperthermiaMovementSpeedModifier", -0.22, -1, 1);
-
-    public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_ATTACK_SPEED = BUILDER
-            .comment("Defines the attack speed attribute modifier")
-            .defineInRange("hyperthermiaAttackSpeedModifier", -0.4, -1, 1);
-
     public static final ForgeConfigSpec.DoubleValue HYPERTHERMIA_FIRE_CHANCE = BUILDER
             .comment("Defines how likely it is to set the player on fire when having hyperthermia")
             .defineInRange("hyperthermiaFireChance", 0.005, 0, 1);
@@ -171,14 +163,6 @@ public class Config
             .defineInRange("hyperthermia2WeaknessMaxLength", 220, 0, 25000);
 
     // Hypothermia
-
-    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_MOVEMENT_SPEED = BUILDER
-            .comment("Defines the movement speed attribute modifier")
-            .defineInRange("hypothermiaMovementSpeedModifier", -0.22, -1, 1);
-
-    public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_ATTACK_DAMAGE = BUILDER
-            .comment("Defines the attack damage attribute modifier")
-            .defineInRange("hypothermiaAttackSpeedModifier", -4.0, -10, 10);
 
     public static final ForgeConfigSpec.DoubleValue HYPOTHERMIA_2_DAMAGE_CHANCE = BUILDER
             .comment("Defines how likely it is to take damage when having hypothermia level 2")

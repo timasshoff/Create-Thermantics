@@ -1,4 +1,6 @@
 {
+  "creativetab.thermantics.default_tab": "Create: Thermantics",
+
   "thermantics.googles.thermal_exchanger.title": "Thermal Exchanger",
   "thermantics.googles.thermal_exchanger.input": "Input Tank:",
   "thermantics.googles.thermal_exchanger.output": "Output Tank:",
@@ -9,7 +11,9 @@
   "fluid_type.thermantics.superheated_scorching_compound": "Superheated Scorching Compound",
   "fluid_type.thermantics.frigid_compound": "Frigid Compound",
   "fluid_type.thermantics.warm_frigid_compound": "Warm Frigid Compound",
-  "summary.thermantics.thermometer": "This is a thermometer.",
+
+  "item.thermantics.thermometer": "Thermometer",
+  "summary.thermantics.thermometer": "This is a thermometer that can be used to measure the temperature of the players environment.",
   "info.thermantics.own_temperature": "Current temperature: ",
   "info.thermantics.freezing": " (FREEZING)",
   "info.thermantics.cold": " (COLD)",
@@ -18,7 +22,21 @@
   "info.thermantics.hot": " (HOT)",
   "info.thermantics.fiery": " (FIERY)",
 
-  "effect.thermantics.clemency": "Clemency",
+  "item.thermantics.radiator": "Radiator",
+
+  "effect.thermantics.clemency": "Thermal Clemency",
   "effect.thermantics.hyperthermia": "Hyperthermia",
-  "effect.thermantics.hypothermia": "Hypothermia"
+  "effect.thermantics.hypothermia": "Hypothermia",
+
+  "item.minecraft.potion.effect.clemency_potion": "Thermal Clemency Potion",
+  "item.minecraft.splash_potion.effect.clemency_potion": "Thermal Clemency Splash Potion",
+  "item.minecraft.lingering_potion.effect.clemency_potion": "Thermal Clemency Lingering Potion",
+
+  "block.thermantics.thermal_exchanger": "Thermal Exchanger",
+  "thermantics.ponder.thermal_exchanger.header": "Controlling temperature using the thermal exchanger",
+  "thermantics.ponder.thermal_exchanger.text_1": "The thermal exchanger has an internal input and an internal output tank.",
+  "thermantics.ponder.thermal_exchanger.text_2": "Fluids can only be inserted into the internal input tank...",
+  "thermantics.ponder.thermal_exchanger.text_3": "...and extracted from the internal output tank.",
+  "thermantics.ponder.thermal_exchanger.text_4": "When the thermal exchangers internal input tank receives a thermal fluid (e.g. scorching compound), it will transfer the fluids thermal energy to the environment.",
+  "thermantics.ponder.thermal_exchanger.text_5": "It will then fill its internal output tank with the temperature-neutral version of the input fluid, which can be extracted and recycled to be used again."
 }
