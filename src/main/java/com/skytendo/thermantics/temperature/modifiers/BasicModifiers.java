@@ -4,15 +4,18 @@ import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.temperature.PlayerTemperatureManager;
 import com.skytendo.thermantics.util.BlockFinder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
-import org.checkerframework.checker.units.qual.C;
 
 public class BasicModifiers {
 
     public static class HeightBiomeModifier implements TemperatureModifier {
         @Override
         public float modifyTemperature(Player player, Biome biome, float temperature) {
+            if (player.level().dimension() != Level.OVERWORLD) {
+                return temperature;
+            }
             if (Config.MIN_HEIGHT_BIOME_TEMP.get() < player.getY() && player.getY() < Config.MAX_HEIGHT_BIOME_TEMP.get()) {
                 temperature = PlayerTemperatureManager.getBiomeTemperature(biome);
             } else if (player.getY() < Config.MIN_HEIGHT_BIOME_TEMP.get()) {
