@@ -1,0 +1,18 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "amount": 250,
+      "fluid": "thermantics:warm_frigid_compound_fluid"
+    }
+  ],
+  "results": [
+    {
+      "amount": 250,
+      "fluid": "thermantics:frigid_compound_fluid"
+    }
+  ]
+}
