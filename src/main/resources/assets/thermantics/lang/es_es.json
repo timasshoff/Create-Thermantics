@@ -1,0 +1,48 @@
+{
+  "creativetab.thermantics.default_tab": "Create: Thermantics",
+
+  "thermantics.googles.thermal_exchanger.title": "Intercambiador térmico",
+  "thermantics.googles.thermal_exchanger.input": "Tanque de entrada:",
+  "thermantics.googles.thermal_exchanger.output": "Tanque de salida:",
+  "thermantics.googles.thermal_exchanger.mode": "Modo actual:",
+
+  "fluid_type.thermantics.cold_scorching_compound": "Compuesto abrasador frío",
+  "fluid_type.thermantics.scorching_compound": "Compuesto abrasador",
+  "fluid_type.thermantics.superheated_scorching_compound": "Compuesto abrasador sobrecalentado",
+  "fluid_type.thermantics.frigid_compound": "Compuesto gélido",
+  "fluid_type.thermantics.warm_frigid_compound": "Compuesto gélido caliente",
+
+  "item.thermantics.cold_scorching_compound_bucket": "Cubo de compuesto abrasador frío",
+  "item.thermantics.scorching_compound_bucket": "Cubo de compuesto abrasador",
+  "item.thermantics.superheated_scorching_compound_bucket": "Cubo de compuesto abrasador sobrecalentado",
+  "item.thermantics.warm_frigid_compound_bucket": "Cubo de compuesto frío y caliente",
+  "item.thermantics.frigid_compound_bucket": "Cubo de compuesto frío",
+
+  "item.thermantics.thermometer": "Termómetro",
+  "summary.thermantics.thermometer": "Este termómetro permite medir la temperatura del entorno del jugador.",
+  "info.thermantics.own_temperature": "Temperatura actual: ",
+  "info.thermantics.freezing": " (CONGELADO)",
+  "info.thermantics.cold": " (GÉLIDO)",
+  "info.thermantics.chilly": " (FRÍO)",
+  "info.thermantics.warm": " (CALIENTE)",
+  "info.thermantics.hot": " (ABRASADOR)",
+  "info.thermantics.fiery": " (ARDIENTE)",
+
+  "item.thermantics.radiator": "Radiador",
+
+  "effect.thermantics.clemency": "Clemencia Térmica",
+  "effect.thermantics.hyperthermia": "Hipertermia",
+  "effect.thermantics.hypothermia": "Hipotermia",
+
+  "item.minecraft.potion.effect.clemency_potion": "Poción de Clemencia Térmica",
+  "item.minecraft.splash_potion.effect.clemency_potion": "Poción de Clemencia Térmica arrojadiza",
+  "item.minecraft.lingering_potion.effect.clemency_potion": "Poción de Clemencia Térmica persistente",
+
+  "block.thermantics.thermal_exchanger": "Intercambiador térmico",
+  "thermantics.ponder.thermal_exchanger.header": "Controla la temperatura mediante el intercambiador térmico",
+  "thermantics.ponder.thermal_exchanger.text_1": "El intercambiador térmico tiene un tanque interno de entrada y uno de salida.",
+  "thermantics.ponder.thermal_exchanger.text_2": "Los fluidos solo pueden introducirse en el tanque interno de entrada...",
+  "thermantics.ponder.thermal_exchanger.text_3": "...y extraerse del tanque interno de salida.",
+  "thermantics.ponder.thermal_exchanger.text_4": "Cuando el tanque interno de entrada del intercambiador térmico recibe un fluido térmico (p. ej., compuesto abrasador), transfiere la energía térmica del fluido al ambiente.",
+  "thermantics.ponder.thermal_exchanger.text_5": "Luego llenará su tanque interno de salida con el versión neutra en cuanto a la temperatura del fluido de entrada, que se puede extraer y reciclar para volver a utilizarse."
+}
