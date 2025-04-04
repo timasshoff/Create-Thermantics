@@ -11,9 +11,9 @@ import net.minecraftforge.registries.RegistryObject;
 import org.joml.Vector3f;
 
 public class CT_FluidTypes {
-    public static final ResourceLocation WATER_STILL = ResourceLocation.withDefaultNamespace("block/water_still");
-    public static final ResourceLocation WATER_FLOWING = ResourceLocation.withDefaultNamespace("block/water_flow");
-    public static final ResourceLocation WATER_OVERLAY = ResourceLocation.withDefaultNamespace("misc/underwater");
+    public static final ResourceLocation WATER_STILL = ResourceLocation.parse("minecraft:block/water_still");
+    public static final ResourceLocation WATER_FLOWING = ResourceLocation.parse("minecraft:block/water_flow");
+    public static final ResourceLocation WATER_OVERLAY = ResourceLocation.parse("minecraft:misc/underwater");
 
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Thermantics.MODID);
 
