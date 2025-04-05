@@ -30,7 +30,7 @@ public class CT_Events {
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player) {
             if(!event.getObject().getCapability(PlayerTemperatureProvider.PLAYER_TEMPERATURE).isPresent()) {
-                event.addCapability(new ResourceLocation(Thermantics.MODID, "properties"), new PlayerTemperatureProvider());
+                event.addCapability(ResourceLocation.fromNamespaceAndPath(Thermantics.MODID, "properties"), new PlayerTemperatureProvider());
             }
         }
     }

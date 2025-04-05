@@ -18,6 +18,8 @@
   "item.thermantics.warm_frigid_compound_bucket": "Warm Frigid Compound Bucket",
   "item.thermantics.frigid_compound_bucket": "Frigid Compound Bucket",
 
+  "enchantment.thermantics.infernal_plating": "Infernal Plating",
+
   "item.thermantics.thermometer": "Thermometer",
   "summary.thermantics.thermometer": "This is a thermometer that can be used to measure the temperature of the players environment.",
   "info.thermantics.own_temperature": "Current temperature: ",

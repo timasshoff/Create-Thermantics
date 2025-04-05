@@ -15,6 +15,7 @@ public class CT_LootModifiers {
 
     public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ITEM = LOOT_MODIFIERS_SERIALIZERS.register("add_item", AddItemModifier.CODEC);
     public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_POTION = LOOT_MODIFIERS_SERIALIZERS.register("add_potion", AddPotionModifier.CODEC);
+    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ENCHANTED_BOOK = LOOT_MODIFIERS_SERIALIZERS.register("add_enchanted_book", AddEnchantedBookModifier.CODEC);
 
     public static void register(IEventBus bus) {
         LOOT_MODIFIERS_SERIALIZERS.register(bus);

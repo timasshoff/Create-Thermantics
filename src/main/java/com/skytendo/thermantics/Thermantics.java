@@ -9,6 +9,7 @@ import com.skytendo.thermantics.block.CT_Blocks;
 import com.skytendo.thermantics.client.ClientTemperatureData;
 import com.skytendo.thermantics.effect.CT_Effects;
 import com.skytendo.thermantics.effect.CT_Potions;
+import com.skytendo.thermantics.enchantment.CT_Enchantments;
 import com.skytendo.thermantics.fluid.CT_FluidTypes;
 import com.skytendo.thermantics.fluid.CT_Fluids;
 import com.skytendo.thermantics.item.CT_CreativeTabs;
@@ -83,6 +84,7 @@ public class Thermantics
         CT_Effects.register(modEventBus);
         CT_Potions.register(modEventBus);
         CT_LootModifiers.register(modEventBus);
+        CT_Enchantments.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

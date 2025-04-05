@@ -2,6 +2,7 @@ package com.skytendo.thermantics.temperature;
 
 import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.effect.CT_Effects;
+import com.skytendo.thermantics.enchantment.CT_Enchantments;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
 import com.skytendo.thermantics.temperature.modifiers.TemperatureModifier;
@@ -106,12 +107,11 @@ public class PlayerTemperatureManager {
             return false;
         }
         for (ItemStack stack : player.getArmorSlots()) {
-            if (stack.is(CT_ItemTags.HYPERTHERMIA_ISOLATING_ARMOR)) {
-                continue;
+            if (stack.getEnchantmentLevel(CT_Enchantments.INFERNAL_PLATING.get()) > 0) {
+                return true;
             }
-            return false;
         }
-        return true;
+        return false;
     }
 
     private static float calculateEnvironmentTemperature(Biome biome, Player player) {
