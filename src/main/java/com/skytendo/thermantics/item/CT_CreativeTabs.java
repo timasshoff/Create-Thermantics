@@ -21,6 +21,7 @@ public class CT_CreativeTabs {
                     .title(Component.translatable("creativetab.thermantics.default_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(CT_Blocks.THERMAL_EXCHANGER.get());
+                        output.accept(CT_Blocks.THERMAL_SENSOR.get());
                         output.accept(CT_Items.THERMOMETER.get());
                         output.accept(CT_Items.THERMAL_PADDING.get());
                         output.accept(CT_Items.RADIATOR.get());

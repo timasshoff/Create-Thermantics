@@ -5,9 +5,6 @@ import com.skytendo.thermantics.effect.CT_Effects;
 import com.skytendo.thermantics.enchantment.CT_Enchantments;
 import com.skytendo.thermantics.networking.CT_Messages;
 import com.skytendo.thermantics.networking.packet.TemperatureDataSyncS2CPacket;
-import com.skytendo.thermantics.temperature.modifiers.TemperatureModifier;
-import com.skytendo.thermantics.temperature.modifiers.TemperatureModifierRegistry;
-import com.skytendo.thermantics.util.CT_ItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,13 +32,13 @@ public class PlayerTemperatureManager {
 
     public static void updateTemperature(PlayerTemperature temperature, TickEvent.PlayerTickEvent event) {
         Holder<Biome> biome =  event.player.level().getBiome(event.player.blockPosition());
-        float environmentTemperature = calculateEnvironmentTemperature(biome.get(), event.player);
+        float environmentTemperature = EnvironmentTemperatureUtil.calculatePlayerLevelEnvironmentTemperature(biome.get(), event.player);
         adjustTemperature(temperature, environmentTemperature);
 
         if (Config.DEBUG_INFO.get()) {
             event.player.sendSystemMessage(Component.literal("---------"));
             event.player.sendSystemMessage(Component.literal("Temperature: " + temperature.getTemperature()));
-            event.player.sendSystemMessage(Component.literal("Base Biome Temperature: " + getBiomeTemperature(biome.get())));
+            event.player.sendSystemMessage(Component.literal("Base Biome Temperature: " + EnvironmentTemperatureUtil.getBiomeTemperature(biome.get())));
             event.player.sendSystemMessage(Component.literal("Environment Temperature: " + environmentTemperature));
             event.player.sendSystemMessage(Component.literal("Ticks in current temp state: " + temperature.getTicksInCurrentTempState()));
         }
@@ -112,18 +109,6 @@ public class PlayerTemperatureManager {
             }
         }
         return false;
-    }
-
-    private static float calculateEnvironmentTemperature(Biome biome, Player player) {
-        float temperature = 0.0f;
-        for (TemperatureModifier modifier : TemperatureModifierRegistry.modifiers) {
-             temperature = modifier.modifyTemperature(player, biome, temperature);
-        }
-        return Math.min(Math.max(temperature, 0.0f), 60.0f);
-    }
-
-    public static float getBiomeTemperature(Biome biome) {
-        return Math.min(Math.max((18.52f * biome.getBaseTemperature() + 12.96f), 0.0f), 50.0f);
     }
 
     private static void adjustTemperature(PlayerTemperature playerTemperature, float environmentTemperature) {

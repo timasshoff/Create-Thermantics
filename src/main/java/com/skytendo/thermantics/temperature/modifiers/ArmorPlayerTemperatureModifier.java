@@ -6,7 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 
-public class ArmorTemperatureModifier implements TemperatureModifier{
+public class ArmorPlayerTemperatureModifier implements PlayerTemperatureModifier {
     @Override
     public float modifyTemperature(Player player, Biome biome, float temperature) {
         for (ItemStack stack : player.getArmorSlots()) {

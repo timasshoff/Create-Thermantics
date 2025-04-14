@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "r": {
+      "item": "thermantics:radiator"
+    },
+    "t": {
+      "item": "thermantics:thermometer"
+    }
+  },
+  "pattern": [
+    "t",
+    "c"
+  ],
+  "result": {
+    "count": 1,
+    "item": "thermantics:thermal_sensor"
+  }
+}

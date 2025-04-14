@@ -46,5 +46,9 @@
   "thermantics.ponder.thermal_exchanger.text_2": "Fluids can only be inserted into the internal input tank...",
   "thermantics.ponder.thermal_exchanger.text_3": "...and extracted from the internal output tank.",
   "thermantics.ponder.thermal_exchanger.text_4": "When the thermal exchangers internal input tank receives a thermal fluid (e.g. scorching compound), it will transfer the fluids thermal energy to the environment.",
-  "thermantics.ponder.thermal_exchanger.text_5": "It will then fill its internal output tank with the temperature-neutral version of the input fluid, which can be extracted and recycled to be used again."
+  "thermantics.ponder.thermal_exchanger.text_5": "It will then fill its internal output tank with the temperature-neutral version of the input fluid, which can be extracted and recycled to be used again.",
+
+  "block.thermantics.thermal_sensor": "Thermal Sensor",
+  "thermantics.label.thermal_sensor.temperature_threshold": "Temperature Threshold",
+  "summary.thermantics.thermal_sensor": "Will emit a redstone signal when the temperature is above the set threshold."
 }

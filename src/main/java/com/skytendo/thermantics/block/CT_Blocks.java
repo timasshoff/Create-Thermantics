@@ -4,8 +4,9 @@ import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.infrastructure.config.CStress;
 import com.skytendo.thermantics.Thermantics;
-import com.skytendo.thermantics.block.thermal_clutch.ThermalClutchBlock;
 import com.skytendo.thermantics.block.thermal_exchanger.ThermalExchangerBlock;
+import com.skytendo.thermantics.block.thermal_sensor.ThermalSensorBlock;
+import com.skytendo.thermantics.block.thermal_sensor.ThermalSensorBlockItem;
 import com.skytendo.thermantics.fluid.CT_Fluids;
 import com.skytendo.thermantics.item.CT_Items;
 import com.tterrag.registrate.providers.DataGenContext;
@@ -14,10 +15,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
@@ -28,12 +26,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import static com.simibubi.create.foundation.data.AssetLookup.partialBaseModel;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
-import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static com.skytendo.thermantics.Thermantics.REGISTRATE;
 
 public class CT_Blocks {
 
@@ -42,6 +37,9 @@ public class CT_Blocks {
     public static final RegistryObject<Block> THERMAL_EXCHANGER = registerBlock("thermal_exchanger",
             () -> new ThermalExchangerBlock(BlockBehaviour.Properties.of()
                     .strength(2.0F, 2.0F).sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> THERMAL_SENSOR = registerBlock("thermal_sensor",
+            () -> new ThermalSensorBlock(BlockBehaviour.Properties.copy(Blocks.REPEATER)), ThermalSensorBlockItem.class);
 
     public static final RegistryObject<LiquidBlock> SCROCHING_COMPOUND_BLOCK = BLOCKS.register("scorching_compound_block",
             () -> new LiquidBlock(CT_Fluids.SOURCE_SCORCHING_COMPOUND, BlockBehaviour.Properties.copy(Blocks.LAVA)));
@@ -58,22 +56,23 @@ public class CT_Blocks {
     public static final RegistryObject<LiquidBlock> FRIGID_COMPOUND_BLOCK = BLOCKS.register("frigid_compound_block",
             () -> new LiquidBlock(CT_Fluids.SOURCE_FRIGID_COMPOUND, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
-    public static final BlockEntry<ThermalClutchBlock> THERMAL_CLUTCH = REGISTRATE.block("thermal_clutch", ThermalClutchBlock::new)
-            .initialProperties(SharedProperties::stone)
-            .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
-            .addLayer(() -> RenderType::cutoutMipped)
-            .transform(CStress.setNoImpact())
-            .transform(axeOrPickaxe())
-            .blockstate((c, p) -> p.directionalBlock(c.get(), forBoolean(c, state -> state.getValue(ThermalClutchBlock.UNCOUPLED), "uncoupled", p)))
-            .item()
-            .transform(customItemModel())
-            .register();
-
     public CT_Blocks() {
     }
 
     public static void register(IEventBus bus) {
         BLOCKS.register(bus);
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, Class<? extends BlockItem> blockItem) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        CT_Items.ITEMS.register(name, () -> {
+            try {
+                return blockItem.getDeclaredConstructor(Block.class, Item.Properties.class).newInstance(toReturn.get(), new Item.Properties());
+            } catch (InstantiationException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        return toReturn;
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

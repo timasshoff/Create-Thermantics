@@ -1,6 +1,7 @@
 package com.skytendo.thermantics.datagen;
 
 import com.skytendo.thermantics.Thermantics;
+import com.skytendo.thermantics.block.CT_Blocks;
 import com.skytendo.thermantics.item.CT_Items;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
