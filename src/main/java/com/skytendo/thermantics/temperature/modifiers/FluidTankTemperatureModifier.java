@@ -1,15 +1,11 @@
 package com.skytendo.thermantics.temperature.modifiers;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllTags;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.skytendo.thermantics.Config;
-import com.skytendo.thermantics.block.CT_Blocks;
-import com.skytendo.thermantics.block.ThermalExchangerBlockEntity;
 import com.skytendo.thermantics.util.BlockFinder;
 import com.skytendo.thermantics.util.CT_FluidTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.material.Fluid;

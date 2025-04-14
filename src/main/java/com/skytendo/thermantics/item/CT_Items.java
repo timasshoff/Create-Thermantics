@@ -35,6 +35,9 @@ public class CT_Items {
     public static final RegistryObject<Item> RADIATOR = ITEMS.register("radiator",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> THERMAL_PADDING = ITEMS.register("thermal_padding",
+            () -> new Item(new Item.Properties()));
+
     public CT_Items() {
     }
 

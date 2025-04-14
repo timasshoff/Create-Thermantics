@@ -22,6 +22,7 @@ public class CT_ItemModelProvider extends ItemModelProvider {
         basicItem(CT_Items.WARM_FRIGID_COMPOUND_BUCKET.get());
         basicItem(CT_Items.FRIGID_COMPOUND_BUCKET.get());
         basicItem(CT_Items.RADIATOR.get());
+        basicItem(CT_Items.THERMAL_PADDING.get());
 
         ModelFile freezingThermometer = withExistingParent("thermometer_freezing", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/thermometer_freezing"));

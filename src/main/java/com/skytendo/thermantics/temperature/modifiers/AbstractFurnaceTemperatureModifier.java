@@ -1,8 +1,6 @@
 package com.skytendo.thermantics.temperature.modifiers;
 
 import com.skytendo.thermantics.Config;
-import com.skytendo.thermantics.block.CT_Blocks;
-import com.skytendo.thermantics.block.ThermalExchangerBlockEntity;
 import com.skytendo.thermantics.util.BlockFinder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

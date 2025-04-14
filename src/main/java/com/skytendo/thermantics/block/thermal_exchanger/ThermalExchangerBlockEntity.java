@@ -1,18 +1,15 @@
-package com.skytendo.thermantics.block;
+package com.skytendo.thermantics.block.thermal_exchanger;
 
-import com.simibubi.create.AllParticleTypes;
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
-import com.simibubi.create.content.fluids.particle.FluidParticleData;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.fluid.CombinedTankWrapper;
-import com.simibubi.create.foundation.particle.AirParticleData;
 import com.simibubi.create.foundation.utility.CreateLang;
 import com.skytendo.thermantics.Config;
 import com.skytendo.thermantics.Thermantics;
+import com.skytendo.thermantics.block.CT_BlockEntities;
 import com.skytendo.thermantics.fluid.CT_Fluids;
-import com.skytendo.thermantics.util.CT_FluidTags;
 import net.createmod.catnip.lang.LangBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -27,7 +24,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import org.checkerframework.checker.units.qual.C;
 import org.joml.Vector3f;
 
 import javax.annotation.Nonnull;

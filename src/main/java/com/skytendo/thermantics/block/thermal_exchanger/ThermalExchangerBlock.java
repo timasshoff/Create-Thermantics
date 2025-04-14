@@ -1,19 +1,15 @@
-package com.skytendo.thermantics.block;
+package com.skytendo.thermantics.block.thermal_exchanger;
 
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
-import net.minecraft.core.BlockPos;
+import com.skytendo.thermantics.block.CT_BlockEntities;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import org.jetbrains.annotations.Nullable;
 
 public class ThermalExchangerBlock extends HorizontalDirectionalBlock implements IWrenchable, IBE<ThermalExchangerBlockEntity> {
 

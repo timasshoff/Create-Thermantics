@@ -64,7 +64,7 @@ public class Thermantics
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final NonNullSupplier<Registrate> REGISTRATE = NonNullSupplier.lazy(() -> Registrate.create(MODID));
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
 
     public Thermantics(FMLJavaModLoadingContext context)
     {

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/clutch/block",
+  "textures": {
+    "0": "thermantics:block/thermal_clutch_off",
+    "particle": "thermantics:block/thermal_clutch_off"
+  }
+}

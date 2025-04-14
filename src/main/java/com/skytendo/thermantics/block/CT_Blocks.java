@@ -1,9 +1,17 @@
 package com.skytendo.thermantics.block;
 
+import com.simibubi.create.api.stress.BlockStressValues;
+import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.infrastructure.config.CStress;
 import com.skytendo.thermantics.Thermantics;
-import com.skytendo.thermantics.fluid.CT_FluidTypes;
+import com.skytendo.thermantics.block.thermal_clutch.ThermalClutchBlock;
+import com.skytendo.thermantics.block.thermal_exchanger.ThermalExchangerBlock;
 import com.skytendo.thermantics.fluid.CT_Fluids;
 import com.skytendo.thermantics.item.CT_Items;
+import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.util.entry.BlockEntry;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -11,12 +19,21 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import static com.simibubi.create.foundation.data.AssetLookup.partialBaseModel;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
+
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
+import static com.skytendo.thermantics.Thermantics.REGISTRATE;
 
 public class CT_Blocks {
 
@@ -41,6 +58,17 @@ public class CT_Blocks {
     public static final RegistryObject<LiquidBlock> FRIGID_COMPOUND_BLOCK = BLOCKS.register("frigid_compound_block",
             () -> new LiquidBlock(CT_Fluids.SOURCE_FRIGID_COMPOUND, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
+    public static final BlockEntry<ThermalClutchBlock> THERMAL_CLUTCH = REGISTRATE.block("thermal_clutch", ThermalClutchBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(CStress.setNoImpact())
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> p.directionalBlock(c.get(), forBoolean(c, state -> state.getValue(ThermalClutchBlock.UNCOUPLED), "uncoupled", p)))
+            .item()
+            .transform(customItemModel())
+            .register();
+
     public CT_Blocks() {
     }
 
@@ -56,6 +84,10 @@ public class CT_Blocks {
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         CT_Items.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static Function<BlockState, ModelFile> forBoolean(DataGenContext<?, ?> ctx, Function<BlockState, Boolean> condition, String key, RegistrateBlockstateProvider prov) {
+        return state -> condition.apply(state) ? partialBaseModel(ctx, prov, key) : partialBaseModel(ctx, prov);
     }
 
 }
